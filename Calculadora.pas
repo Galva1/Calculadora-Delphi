@@ -61,6 +61,7 @@ type
     procedure pnlACClick(Sender: TObject);
     procedure pnl11Click(Sender: TObject);
     procedure ResetarNumeros(Sender: TObject);
+    function  CheckNumeroColocado(NumeroDigitado:String):String;
   private
     { Private declarations }
     temVirgula, temNegativo, jahouveResultado, podeReiniciar: Boolean;
@@ -78,27 +79,41 @@ implementation
 {$R *.dfm}
 
 
+
+function TForm1.CheckNumeroColocado(NumeroDigitado:String):String;
+begin
+  if jaHouveResultado then
+  begin
+    ResetarNumeros(nil);
+    Result:='Substituir';
+  end
+  else
+    Result:='Inserir';
+
+end;
+
+
 procedure TForm1.pnl7Click(Sender: TObject);
 begin
-  // Após o Resultado sair, se o usuário pressionar alguma letra ele reseta.
-  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
+  if edtResult.Text='0' then
   begin
-    edtResult.Text:='7';
     ResetarNumeros(nil);
+    edtResult.Text:='7';
   end
   else
   begin
-    if (edtResult.Text='0') then
-    begin
-    edtResult.Text:='7';
-    end
+    if CheckNumeroColocado('7')='Inserir' then
+      edtResult.Text:=edtResult.Text+'7'
     else
     begin
-      if (edtResult.Text<>FloatToStr(valorResultado)) then
-        edtResult.Text:=edtResult.Text+'7'
-      else
+      if CheckNumeroColocado('7')='Substituir' then
+      begin
+        jaHouveResultado:=False;
         edtResult.Text:='7';
+      end;
+
     end;
+
 
   end;
 
