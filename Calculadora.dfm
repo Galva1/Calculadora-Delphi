@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 297
-  Top = 121
+  Left = 169
+  Top = 120
   Width = 928
   Height = 593
   Caption = 'fCalculadora'
@@ -16,21 +16,21 @@ object Form1: TForm1
   TextHeight = 13
   object Panel1: TPanel
     Left = 120
-    Top = 16
-    Width = 393
-    Height = 513
+    Top = 0
+    Width = 361
+    Height = 561
     Color = cl3DDkShadow
     TabOrder = 0
     object Panel2: TPanel
       Left = 8
-      Top = 8
-      Width = 377
-      Height = 81
+      Top = 64
+      Width = 345
+      Height = 73
       TabOrder = 0
       object edtResult: TEdit
         Left = 8
         Top = 8
-        Width = 361
+        Width = 329
         Height = 54
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -44,8 +44,8 @@ object Form1: TForm1
     end
     object Panel3: TPanel
       Left = 8
-      Top = 96
-      Width = 377
+      Top = 144
+      Width = 345
       Height = 409
       Color = cl3DDkShadow
       TabOrder = 1
@@ -80,9 +80,9 @@ object Form1: TForm1
         OnClick = pnlVirgClick
       end
       object pnlResult: TPanel
-        Left = 264
+        Left = 256
         Top = 336
-        Width = 105
+        Width = 73
         Height = 65
         Caption = '='
         Font.Charset = DEFAULT_CHARSET
@@ -230,8 +230,8 @@ object Form1: TForm1
         OnClick = pnl9Click
       end
       object pnlMenos: TPanel
-        Left = 296
-        Top = 160
+        Left = 256
+        Top = 176
         Width = 73
         Height = 65
         Caption = '-'
@@ -245,8 +245,8 @@ object Form1: TForm1
         OnClick = pnlMenosClick
       end
       object pnlMult: TPanel
-        Left = 296
-        Top = 88
+        Left = 256
+        Top = 96
         Width = 73
         Height = 65
         Caption = 'x'
@@ -260,7 +260,7 @@ object Form1: TForm1
         OnClick = pnlMultClick
       end
       object pnlDiv: TPanel
-        Left = 296
+        Left = 256
         Top = 16
         Width = 73
         Height = 65
@@ -275,10 +275,10 @@ object Form1: TForm1
         OnClick = pnlDivClick
       end
       object pnlMais: TPanel
-        Left = 296
-        Top = 232
+        Left = 256
+        Top = 256
         Width = 73
-        Height = 89
+        Height = 65
         Caption = '+'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -294,7 +294,7 @@ object Form1: TForm1
         Top = 16
         Width = 73
         Height = 65
-        Caption = 'C'
+        Caption = 'CE'
         Color = clMaroon
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindow
@@ -310,7 +310,7 @@ object Form1: TForm1
         Top = 16
         Width = 73
         Height = 65
-        Caption = 'AC'
+        Caption = 'C'
         Color = clMaroon
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindow
@@ -326,7 +326,7 @@ object Form1: TForm1
         Top = 16
         Width = 73
         Height = 65
-        Caption = 'M-'
+        Caption = '+/-'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -27
@@ -354,30 +354,56 @@ object Form1: TForm1
     end
   end
   object Panel4: TPanel
-    Left = 512
-    Top = 24
+    Left = 224
+    Top = 13
     Width = 249
-    Height = 73
+    Height = 44
     Color = cl3DDkShadow
     TabOrder = 1
     object Panel5: TPanel
       Left = 8
       Top = 8
       Width = 233
-      Height = 57
+      Height = 25
       TabOrder = 0
       object lblResult: TLabel
-        Left = 8
-        Top = 16
-        Width = 5
-        Height = 25
+        Left = 228
+        Top = 1
+        Width = 4
+        Height = 23
+        Align = alRight
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -20
+        Font.Height = -16
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
       end
+    end
+  end
+  object pnl10: TPanel
+    Left = 480
+    Top = 0
+    Width = 337
+    Height = 560
+    Color = cl3DDkShadow
+    TabOrder = 2
+    object mmoResultado: TMemo
+      Left = 1
+      Top = 1
+      Width = 335
+      Height = 505
+      Align = alTop
+      TabOrder = 0
+    end
+    object pnl11: TPanel
+      Left = 272
+      Top = 512
+      Width = 57
+      Height = 33
+      Caption = 'Delete'
+      TabOrder = 1
+      OnClick = pnl11Click
     end
   end
 end

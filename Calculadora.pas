@@ -35,6 +35,9 @@ type
     Panel4: TPanel;
     Panel5: TPanel;
     lblResult: TLabel;
+    pnl10: TPanel;
+    mmoResultado: TMemo;
+    pnl11: TPanel;
     procedure pnl7Click(Sender: TObject);
     procedure pnl8Click(Sender: TObject);
     procedure pnl9Click(Sender: TObject);
@@ -56,11 +59,13 @@ type
     procedure pnlDivClick(Sender: TObject);
     procedure pnlResultClick(Sender: TObject);
     procedure pnlACClick(Sender: TObject);
+    procedure pnl11Click(Sender: TObject);
+    procedure ResetarNumeros(Sender: TObject);
   private
     { Private declarations }
-    temVirgula, temNegativo, jahouveResultado: Boolean;
+    temVirgula, temNegativo, jahouveResultado, podeReiniciar: Boolean;
     valor1, valor2, valorResultado: Extended;
-    oper: string;
+    oper, histOperacoes: string;
   public
     { Public declarations }
   end;
@@ -78,12 +83,8 @@ begin
   // Após o Resultado sair, se o usuário pressionar alguma letra ele reseta.
   if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
   begin
-    valor1:=0;
-    valor2:=0;
-    valorResultado:=0;
-    lblResult.Caption:='';
     edtResult.Text:='7';
-    jaHouveResultado:= False;
+    ResetarNumeros(nil);
   end
   else
   begin
@@ -107,12 +108,8 @@ procedure TForm1.pnl8Click(Sender: TObject);
 begin
   if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
   begin
-    valor1:=0;
-    valor2:=0;
-    valorResultado:=0;
-    lblResult.Caption:='';
     edtResult.Text:='8';
-    jaHouveResultado:= False;
+    ResetarNumeros(nil);
   end
   else
   begin
@@ -135,12 +132,8 @@ procedure TForm1.pnl9Click(Sender: TObject);
 begin
   if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
   begin
-    valor1:=0;
-    valor2:=0;
-    valorResultado:=0;
-    lblResult.Caption:='';
     edtResult.Text:='9';
-    jaHouveResultado:= False;
+    ResetarNumeros(nil);
   end
   else
   begin
@@ -163,12 +156,8 @@ procedure TForm1.pnl4Click(Sender: TObject);
 begin
   if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
   begin
-    valor1:=0;
-    valor2:=0;
-    valorResultado:=0;
-    lblResult.Caption:='';
     edtResult.Text:='4';
-    jaHouveResultado:= False;
+    ResetarNumeros(nil);
   end
   else
   begin
@@ -191,12 +180,8 @@ procedure TForm1.pnl5Click(Sender: TObject);
 begin
   if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
   begin
-    valor1:=0;
-    valor2:=0;
-    valorResultado:=0;
-    lblResult.Caption:='';
     edtResult.Text:='5';
-    jaHouveResultado:= False;
+    ResetarNumeros(nil);
   end
   else
   begin
@@ -219,12 +204,8 @@ procedure TForm1.pnl6Click(Sender: TObject);
 begin
   if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
   begin
-    valor1:=0;
-    valor2:=0;
-    valorResultado:=0;
-    lblResult.Caption:='';
     edtResult.Text:='6';
-    jaHouveResultado:= False;
+    ResetarNumeros(nil);
   end
   else
   begin
@@ -249,12 +230,8 @@ procedure TForm1.pnl1Click(Sender: TObject);
 begin
   if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
   begin
-    valor1:=0;
-    valor2:=0;
-    valorResultado:=0;
-    lblResult.Caption:='';
     edtResult.Text:='1';
-    jaHouveResultado:= False;
+    ResetarNumeros(nil);
   end
   else
   begin
@@ -277,12 +254,8 @@ procedure TForm1.pnl2Click(Sender: TObject);
 begin
   if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
   begin
-    valor1:=0;
-    valor2:=0;
-    valorResultado:=0;
-    lblResult.Caption:='';
     edtResult.Text:='2';
-    jaHouveResultado:= False;
+    ResetarNumeros(nil);
   end
   else
   begin
@@ -305,12 +278,8 @@ procedure TForm1.pnl3Click(Sender: TObject);
 begin
   if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
   begin
-    valor1:=0;
-    valor2:=0;
-    valorResultado:=0;
-    lblResult.Caption:='';
     edtResult.Text:='3';
-    jaHouveResultado:= False;
+    ResetarNumeros(nil);
   end
   else
   begin
@@ -333,12 +302,9 @@ procedure TForm1.pnl0Click(Sender: TObject);
 begin
   if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
   begin
-    valor1:=0;
-    valor2:=0;
-    valorResultado:=0;
-    lblResult.Caption:='';
+
     edtResult.Text:='0';
-    jaHouveResultado:= False;
+    ResetarNumeros(nil);
   end
   else
   begin
@@ -355,6 +321,15 @@ begin
     end;
 
   end;
+end;
+
+procedure TForm1.ResetarNumeros(Sender: TObject);
+begin
+    valor1:=0;
+    valor2:=0;
+    valorResultado:=0;
+    lblResult.Caption:='';
+    jaHouveResultado:= False;
 end;
 
 procedure TForm1.pnlVirgClick(Sender: TObject);
@@ -442,10 +417,20 @@ begin
   end
   else
   begin
-    valor1:= 0;
-    valor2:= 0;
-    edtResult.Text:='0';
-    lblResult.Caption:='';
+    if valor1 = valorResultado then
+      begin
+        edtResult.Text:='0';
+        temVirgula:=False;
+        temNegativo:=False;
+      end
+      else
+      begin
+        valor1:= 0;
+        valor2:= 0;
+       edtResult.Text:='0';
+        lblResult.Caption:='';
+      end;
+
   
   end;
 end;
@@ -459,30 +444,49 @@ begin
  valor2:= 0;
  oper:='';
  valorResultado:= 0.000001;
+ podeReiniciar:= False;
 end;
 
 procedure TForm1.pnlNegativoClick(Sender: TObject);
 var
   negativar: Extended;
 begin
-  if (edtResult.Text = '0') or (edtResult.Text=FloatToStr(valorResultado)) then
+  if (edtResult.Text = '0') then
   begin
     edtResult.Text:='0';
+
   end
   else
   begin
-    negativar:=StrToFloat(edtResult.Text)*-1;
-    edtResult.Text:=FloatToStr(negativar);
+    if (edtResult.Text=FloatToStr(valorResultado)) then
+    begin
+      lblResult.Caption:='negativo('+edtResult.Text+')';
+      negativar:=StrToFloat(edtResult.Text)*-1;
+      jahouveResultado:= False;
+      edtResult.Text:=FloatToStr(negativar);
+      podeReiniciar:= True;
+        if temNegativo = False then
+          temNegativo:= True
+        else
+          temNegativo:= False;
+    end
+    else
+    begin
+      negativar:=StrToFloat(edtResult.Text)*-1;
+      edtResult.Text:=FloatToStr(negativar);
     if temNegativo = False then
       temNegativo:= True
     else
       temNegativo:= False;
+    end;
+
+
   end;
 end;
 procedure TForm1.pnlMaisClick(Sender: TObject);
 begin
   oper:='+';
-  if edtResult.Text=FloatToStr(valorResultado) then
+  if edtResult.Text=FloatToStr(valorResultado) then     
   begin
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
@@ -494,17 +498,26 @@ begin
     if(valor1 = 0) then
     begin
     valor1:=StrToFloat(edtResult.Text);
-    TemVirgula:= False;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-    edtResult.Text:='0';
     end
     else
     begin
-      valor2:=StrToFloat(edtResult.Text);
-      valor1:=valor1+valor2;
-      lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-      edtResult.Text:='0';
-      TemVirgula:=False;
+      if  podeReiniciar = True then
+      begin
+        valor1:=StrToFloat(edtResult.Text);
+        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
+      end
+      else
+      begin
+        valor2:=StrToFloat(edtResult.Text);
+        valorResultado:=valor1+valor2;
+        histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+        mmoResultado.Lines.Insert(0,histOperacoes);
+        valor1:=valorResultado;
+        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
+        edtResult.Text:=FloatToStr(valor1);
+      end;
+
     end;
 
    end;
@@ -533,11 +546,24 @@ begin
     end
     else
     begin
-      valor2:=StrToFloat(edtResult.Text);
-      valor1:=valor1-valor2;
-      lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-      edtResult.Text:= '0';
-      TemVirgula:=False;
+      if  podeReiniciar = True then
+      begin
+        valor1:=StrToFloat(edtResult.Text);
+        TemVirgula:= False;
+        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
+        edtResult.Text:='0';
+      end
+      else
+      begin
+        valor2:=StrToFloat(edtResult.Text);
+        valorResultado:= valor1-valor2;
+        histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+        mmoResultado.Lines.Insert(0,histOperacoes);
+        valor1:=valorResultado;
+        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
+        edtResult.Text:='0';
+        TemVirgula:=False;
+      end;
     end;
   end;
 
@@ -564,11 +590,23 @@ begin
     end
     else
     begin
-      valor2:=StrToFloat(edtResult.Text);
-      valor1:=valor1*valor2;
-      lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-      edtResult.Text:= '0';
-      TemVirgula:=False;
+      if  podeReiniciar = True then
+      begin
+        valor1:=StrToFloat(edtResult.Text);
+        TemVirgula:= False;
+        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
+        edtResult.Text:='0';
+      end
+      else
+      begin
+        valor2:=StrToFloat(edtResult.Text);
+        valorResultado:= valor1*valor2;
+        histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+        mmoResultado.Lines.Insert(0,histOperacoes);
+        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
+        edtResult.Text:='0';
+        TemVirgula:=False;
+      end;
     end;
   end;
 end;
@@ -597,10 +635,23 @@ begin
       valor2:=StrToFloat(edtResult.Text);
       if not(valor2=0) then
       begin
-        valor1:=valor1/valor2;
+        if  podeReiniciar = True then
+        begin
+        valor1:=StrToFloat(edtResult.Text);
+        TemVirgula:= False;
         lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-        edtResult.Text:= '0';
-        TemVirgula:=False;
+        edtResult.Text:='0';
+        end
+        else
+        begin
+          valor2:=StrToFloat(edtResult.Text);
+          valorResultado:= valor1/valor2;
+          histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+          mmoResultado.Lines.Insert(0,histOperacoes);
+          lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
+          edtResult.Text:='0';
+          TemVirgula:=False;
+        end;
       end
       else
       begin
@@ -620,6 +671,7 @@ begin
     temVirgula:= False;
     temNegativo:= False;
     jahouveResultado:= True;
+
     if(oper='+') then
     begin
       valorResultado:= valor1+valor2;
@@ -651,6 +703,8 @@ begin
         ShowMessage('Não pode dividir por zero');
       end;
     end;
+//    mmoResultado.Lines.Add(lblResult.Caption);
+    mmoResultado.Lines.Insert(0,lblResult.Caption);
   end
   else
   begin
@@ -665,8 +719,15 @@ procedure TForm1.pnlACClick(Sender: TObject);
 begin
   valor1:= 0;
   valor2:= 0;
+  temVirgula := False;
+  temNegativo := False;
   edtResult.Text:='0';
   lblResult.Caption:='';
+end;
+
+procedure TForm1.pnl11Click(Sender: TObject);
+begin
+  mmoResultado.Clear;
 end;
 
 end.
