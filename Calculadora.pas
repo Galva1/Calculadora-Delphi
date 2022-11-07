@@ -62,6 +62,8 @@ type
     procedure pnl11Click(Sender: TObject);
     procedure ResetarNumeros(Sender: TObject);
     function  CheckNumeroColocado(NumeroDigitado:String):String;
+    procedure edtResultChange(Sender: TObject);
+    procedure edtResultKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     temVirgula, temNegativo, jahouveResultado, podeReiniciar: Boolean;
@@ -95,25 +97,24 @@ end;
 
 procedure TForm1.pnl7Click(Sender: TObject);
 begin
-  if edtResult.Text='0' then
+  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
   begin
-    ResetarNumeros(nil);
     edtResult.Text:='7';
+    ResetarNumeros(nil);
   end
   else
   begin
-    if CheckNumeroColocado('7')='Inserir' then
-      edtResult.Text:=edtResult.Text+'7'
+    if (edtResult.Text='0') then
+    begin
+    edtResult.Text:='7';
+    end
     else
     begin
-      if CheckNumeroColocado('7')='Substituir' then
-      begin
-        jaHouveResultado:=False;
+      if (edtResult.Text<>FloatToStr(valorResultado)) then
+        edtResult.Text:=edtResult.Text+'7'
+      else
         edtResult.Text:='7';
-      end;
-
     end;
-
 
   end;
 
@@ -504,8 +505,10 @@ begin
   if edtResult.Text=FloatToStr(valorResultado) then     
   begin
     valor1:=valorResultado;
+
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
+
 
   end
   else
@@ -514,6 +517,9 @@ begin
     begin
     valor1:=StrToFloat(edtResult.Text);
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
+    temVirgula:= False;
+    temNegativo:= False;
+    edtResult.Text:='0';
     end
     else
     begin
@@ -558,6 +564,7 @@ begin
       TemVirgula:= False;
       lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
       edtResult.Text:='0';
+      temNegativo:= False;
     end
     else
     begin
@@ -602,10 +609,11 @@ begin
       TemVirgula:= False;
       lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
       edtResult.Text:='0';
+      temNegativo:= False;
     end
     else
     begin
-      if  podeReiniciar = True then
+      if  podeReiniciar then
       begin
         valor1:=StrToFloat(edtResult.Text);
         TemVirgula:= False;
@@ -644,13 +652,14 @@ begin
       TemVirgula:= False;
       lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
       edtResult.Text:='0';
+      temNegativo:= False;
     end
     else
     begin
       valor2:=StrToFloat(edtResult.Text);
       if not(valor2=0) then
       begin
-        if  podeReiniciar = True then
+        if  podeReiniciar then
         begin
         valor1:=StrToFloat(edtResult.Text);
         TemVirgula:= False;
@@ -743,6 +752,119 @@ end;
 procedure TForm1.pnl11Click(Sender: TObject);
 begin
   mmoResultado.Clear;
+end;
+
+procedure TForm1.edtResultChange(Sender: TObject);
+var
+  vPosicao: Integer;
+begin
+  if (edtResult.Text = '') then
+      edtResult.Text:='0';
+
+  edtResult.SelStart:= Length(edtResult.text);
+
+end;
+
+procedure TForm1.edtResultKeyPress(Sender: TObject; var Key: Char);
+begin
+  if not(Key in['0'..'9',',',#8,'+','*','-','/',#13])then
+  begin
+    key:=#0;
+  end
+  else
+  begin
+    if (Key in[',']) then
+    begin
+    if temVirgula = False then
+    begin
+      if(edtResult.Text=FloatToStr(valorResultado)) then
+        edtResult.Text:='0';
+      temVirgula:= True;
+    end
+    else
+      Key:=#0;
+    end;
+    if(Key in(['0'])) then
+    begin
+      pnl0Click(nil);
+      key:=#0;
+    end;
+    if(Key in(['1'])) then
+    begin
+      pnl1Click(nil);
+      key:=#0;
+    end;
+    if(Key in(['2'])) then
+    begin
+      pnl2Click(nil);
+      key:=#0;
+    end;
+    if(Key in(['3'])) then
+    begin
+      pnl3Click(nil);
+      key:=#0;
+    end;
+    if(Key in(['4'])) then
+    begin
+      pnl4Click(nil);
+      key:=#0;
+    end;
+    if(Key in(['5'])) then
+    begin
+      pnl5Click(nil);
+      key:=#0;
+    end;
+    if(Key in(['6'])) then
+    begin
+      pnl6Click(nil);
+      key:=#0;
+    end;
+    if(Key in(['7'])) then
+    begin
+      pnl7Click(nil);
+      key:=#0;
+    end;
+    if(Key in(['8'])) then
+    begin
+      pnl8Click(nil);
+      key:=#0;
+    end;
+    if(Key in(['9'])) then
+    begin
+      pnl9Click(nil);
+      key:=#0;
+    end;
+    if(Key in([#8])) then
+    begin
+      pnlDeleteClick(nil);
+      key:=#0;
+    end;
+    if(Key in(['+'])) then
+    begin
+      pnlMaisClick(nil);
+      key:=#0;
+    end;
+    if(Key in(['-'])) then
+    begin
+      pnlMenosClick(nil);
+      key:=#0;
+    end;
+    if(Key in(['*'])) then
+    begin
+      pnlMultClick(nil);
+      key:=#0;
+    end;
+    if(Key in(['/'])) then
+    begin
+      pnlDivClick(nil);
+      key:=#0;
+    end;
+    if(Key in([#13])) then
+    begin
+      pnlResultClick(nil);
+    end;
+  end;
+
 end;
 
 end.

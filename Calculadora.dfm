@@ -32,14 +32,18 @@ object Form1: TForm1
         Top = 8
         Width = 329
         Height = 54
+        BiDiMode = bdRightToLeft
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -40
         Font.Name = 'MS Sans Serif'
         Font.Style = []
+        ParentBiDiMode = False
         ParentFont = False
         TabOrder = 0
         Text = '0'
+        OnChange = edtResultChange
+        OnKeyPress = edtResultKeyPress
       end
     end
     object Panel3: TPanel
