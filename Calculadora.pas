@@ -8,10 +8,10 @@ uses
 
 type
   TForm1 = class(TForm)
-    Panel1: TPanel;
-    Panel2: TPanel;
+    pnlFundoTotal: TPanel;
+    pnlFundoResultado: TPanel;
     edtResult: TEdit;
-    Panel3: TPanel;
+    pnlFundoDigitos: TPanel;
     pnl0: TPanel;
     pnlVirg: TPanel;
     pnlResult: TPanel;
@@ -32,14 +32,14 @@ type
     pnlAC: TPanel;
     pnlNegativo: TPanel;
     pnlDelete: TPanel;
-    Panel4: TPanel;
+    pnlFundolblResultado: TPanel;
     Panel5: TPanel;
     lblResult: TLabel;
     pnlMemo: TPanel;
     mmoResultado: TMemo;
     pnl11: TPanel;
     pnl12: TPanel;
-    pnl10: TPanel;
+    pnlOpcoes: TPanel;
     procedure pnl7Click(Sender: TObject);
     procedure pnl8Click(Sender: TObject);
     procedure pnl9Click(Sender: TObject);
@@ -68,7 +68,7 @@ type
     procedure edtResultKeyPress(Sender: TObject; var Key: Char);
     procedure RealizarOperacao(Sender: TOBject);
     procedure pnl12Click(Sender: TObject);
-    procedure pnl10Click(Sender: TObject);
+    procedure pnlOpcoesClick(Sender: TObject);
   private
     { Private declarations }
     temVirgula, temNegativo, jahouveResultado, podeReiniciar, mmoHide: Boolean;
@@ -82,6 +82,8 @@ var
   Form1: TForm1;
 
 implementation
+
+uses Unit2;
 
 {$R *.dfm}
 
@@ -932,13 +934,14 @@ begin
 
 end;
 
-procedure TForm1.pnl10Click(Sender: TObject);
-var
-  Form2: TForm2;
+procedure TForm1.pnlOpcoesClick(Sender: TObject);
 begin
-  Form2:= TForm2.Create(nil);
-  TForm2.showModal;
-  FreeAndNil(Form2);
+  try
+    formOpcoes := TFormOpcoes.Create(self);
+    formOpcoes.ShowModal;
+  finally
+    FormOpcoes.Free;
+  end;
 end;
 
 end.

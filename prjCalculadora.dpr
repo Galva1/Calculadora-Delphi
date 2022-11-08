@@ -3,7 +3,7 @@ program prjCalculadora;
 uses
   Forms,
   Calculadora in 'Calculadora.pas' {Form1},
-  Unit2 in 'Unit2.pas' {TFormOpcoes};
+  Unit2 in 'Unit2.pas' {FormOpcoes};
 
 {$R *.res}
 

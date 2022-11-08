@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 201
-  Top = 147
+  Left = 206
+  Top = 188
   Width = 921
   Height = 654
   Caption = 'fCalculadora'
@@ -14,14 +14,14 @@ object Form1: TForm1
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
+  object pnlFundoTotal: TPanel
     Left = 120
     Top = 24
     Width = 361
     Height = 577
     Color = cl3DDkShadow
     TabOrder = 0
-    object Panel2: TPanel
+    object pnlFundoResultado: TPanel
       Left = 8
       Top = 80
       Width = 345
@@ -46,7 +46,7 @@ object Form1: TForm1
         OnKeyPress = edtResultKeyPress
       end
     end
-    object Panel3: TPanel
+    object pnlFundoDigitos: TPanel
       Left = 8
       Top = 160
       Width = 345
@@ -365,17 +365,17 @@ object Form1: TForm1
       TabOrder = 2
       OnClick = pnl12Click
     end
-    object pnl10: TPanel
+    object pnlOpcoes: TPanel
       Left = 232
       Top = 8
       Width = 57
       Height = 17
       Caption = 'Op'#231#245'es'
       TabOrder = 3
-      OnClick = pnl10Click
+      OnClick = pnlOpcoesClick
     end
   end
-  object Panel4: TPanel
+  object pnlFundolblResultado: TPanel
     Left = 224
     Top = 53
     Width = 249
