@@ -35,9 +35,11 @@ type
     Panel4: TPanel;
     Panel5: TPanel;
     lblResult: TLabel;
-    pnl10: TPanel;
+    pnlMemo: TPanel;
     mmoResultado: TMemo;
     pnl11: TPanel;
+    pnl12: TPanel;
+    pnl10: TPanel;
     procedure pnl7Click(Sender: TObject);
     procedure pnl8Click(Sender: TObject);
     procedure pnl9Click(Sender: TObject);
@@ -65,9 +67,11 @@ type
     procedure edtResultChange(Sender: TObject);
     procedure edtResultKeyPress(Sender: TObject; var Key: Char);
     procedure RealizarOperacao(Sender: TOBject);
+    procedure pnl12Click(Sender: TObject);
+    procedure pnl10Click(Sender: TObject);
   private
     { Private declarations }
-    temVirgula, temNegativo, jahouveResultado, podeReiniciar: Boolean;
+    temVirgula, temNegativo, jahouveResultado, podeReiniciar, mmoHide: Boolean;
     valor1, valor2, valorResultado: Extended;
     oper, histOperacoes: string;
   public
@@ -462,6 +466,7 @@ begin
  oper:='';
  valorResultado:= 0.000001;
  podeReiniciar:= False;
+ mmoHide:= False;
 end;
 
 procedure TForm1.pnlNegativoClick(Sender: TObject);
@@ -508,6 +513,7 @@ begin
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
+    valorResultado:=0;
   end
   else
   begin
@@ -533,11 +539,14 @@ begin
         valor2:=StrToFloat(edtResult.Text);
         RealizarOperacao(nil);
         histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-        mmoResultado.Lines.Insert(0,histOperacoes);
+        if mmoResultado.Lines[0] = histOperacoes then
+        else
+          mmoResultado.Lines.Insert(0,histOperacoes);
         valor1:=valorResultado;
         oper:='+';
         lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
         edtResult.Text:=FloatToStr(valor1);
+        valorResultado:=0;
       end;
 
     end;
@@ -568,6 +577,7 @@ begin
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
+    valorResultado:=0;
 
   end
   else
@@ -602,6 +612,7 @@ begin
         lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
         edtResult.Text:='0';
         TemVirgula:=False;
+        valorResultado:=0;
       end;
     end;
   end;
@@ -616,6 +627,7 @@ begin
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
+    valorResultado:=0;
 
   end
   else
@@ -649,6 +661,7 @@ begin
         lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
         edtResult.Text:='0';
         TemVirgula:=False;
+        valorResultado:=0;
       end;
     end;
   end;
@@ -663,6 +676,7 @@ begin
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
+    valorResultado:=0;
 
   end
   else
@@ -700,6 +714,7 @@ begin
           lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
           edtResult.Text:='0';
           TemVirgula:=False;
+          valorResultado:=0;
         end;
       end
       else
@@ -753,7 +768,11 @@ begin
       end;
     end;
 //    mmoResultado.Lines.Add(lblResult.Caption);
-    mmoResultado.Lines.Insert(0,lblResult.Caption);
+    histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+    if mmoResultado.Lines[0] = histOperacoes then
+        else
+          mmoResultado.Lines.Insert(0,histOperacoes);
+//    mmoResultado.Lines.Insert(0,lblResult.Caption);
   end
   else
   begin
@@ -890,6 +909,36 @@ begin
     end;
   end;
 
+end;
+
+procedure TForm1.pnl12Click(Sender: TObject);
+begin
+  if not(mmoHide) then
+  begin
+    mmoHide:= True;
+    mmoResultado.Hide;
+    pnlMemo.Hide;
+    pnl11.Hide;
+
+  end
+  else
+  begin
+     mmoHide:= False;
+     mmoResultado.Show;
+     pnlMemo.Show;
+     pnl11.Show;
+
+  end;
+
+end;
+
+procedure TForm1.pnl10Click(Sender: TObject);
+var
+  Form2: TForm2;
+begin
+  Form2:= TForm2.Create(nil);
+  TForm2.showModal;
+  FreeAndNil(Form2);
 end;
 
 end.

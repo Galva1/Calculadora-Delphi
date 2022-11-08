@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 169
-  Top = 120
-  Width = 928
-  Height = 593
+  Left = 201
+  Top = 147
+  Width = 921
+  Height = 654
   Caption = 'fCalculadora'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,14 +16,14 @@ object Form1: TForm1
   TextHeight = 13
   object Panel1: TPanel
     Left = 120
-    Top = 0
+    Top = 24
     Width = 361
-    Height = 561
+    Height = 577
     Color = cl3DDkShadow
     TabOrder = 0
     object Panel2: TPanel
       Left = 8
-      Top = 64
+      Top = 80
       Width = 345
       Height = 73
       TabOrder = 0
@@ -48,7 +48,7 @@ object Form1: TForm1
     end
     object Panel3: TPanel
       Left = 8
-      Top = 144
+      Top = 160
       Width = 345
       Height = 409
       Color = cl3DDkShadow
@@ -356,10 +356,28 @@ object Form1: TForm1
         OnClick = pnlDeleteClick
       end
     end
+    object pnl12: TPanel
+      Left = 296
+      Top = 8
+      Width = 57
+      Height = 17
+      Caption = 'Hist'#243'rico'
+      TabOrder = 2
+      OnClick = pnl12Click
+    end
+    object pnl10: TPanel
+      Left = 232
+      Top = 8
+      Width = 57
+      Height = 17
+      Caption = 'Op'#231#245'es'
+      TabOrder = 3
+      OnClick = pnl10Click
+    end
   end
   object Panel4: TPanel
     Left = 224
-    Top = 13
+    Top = 53
     Width = 249
     Height = 44
     Color = cl3DDkShadow
@@ -385,11 +403,11 @@ object Form1: TForm1
       end
     end
   end
-  object pnl10: TPanel
+  object pnlMemo: TPanel
     Left = 480
-    Top = 0
+    Top = 24
     Width = 337
-    Height = 560
+    Height = 576
     Color = cl3DDkShadow
     TabOrder = 2
     object mmoResultado: TMemo
@@ -404,7 +422,7 @@ object Form1: TForm1
       Left = 272
       Top = 512
       Width = 57
-      Height = 33
+      Height = 57
       Caption = 'Delete'
       TabOrder = 1
       OnClick = pnl11Click

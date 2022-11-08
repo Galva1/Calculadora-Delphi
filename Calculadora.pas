@@ -35,9 +35,11 @@ type
     Panel4: TPanel;
     Panel5: TPanel;
     lblResult: TLabel;
-    pnl10: TPanel;
+    pnlMemo: TPanel;
     mmoResultado: TMemo;
     pnl11: TPanel;
+    pnl12: TPanel;
+    pnl10: TPanel;
     procedure pnl7Click(Sender: TObject);
     procedure pnl8Click(Sender: TObject);
     procedure pnl9Click(Sender: TObject);
@@ -65,9 +67,11 @@ type
     procedure edtResultChange(Sender: TObject);
     procedure edtResultKeyPress(Sender: TObject; var Key: Char);
     procedure RealizarOperacao(Sender: TOBject);
+    procedure pnl12Click(Sender: TObject);
+    procedure pnl10Click(Sender: TObject);
   private
     { Private declarations }
-    temVirgula, temNegativo, jahouveResultado, podeReiniciar: Boolean;
+    temVirgula, temNegativo, jahouveResultado, podeReiniciar, mmoHide: Boolean;
     valor1, valor2, valorResultado: Extended;
     oper, histOperacoes: string;
   public
@@ -462,6 +466,7 @@ begin
  oper:='';
  valorResultado:= 0.000001;
  podeReiniciar:= False;
+ mmoHide:= False;
 end;
 
 procedure TForm1.pnlNegativoClick(Sender: TObject);
@@ -904,6 +909,36 @@ begin
     end;
   end;
 
+end;
+
+procedure TForm1.pnl12Click(Sender: TObject);
+begin
+  if not(mmoHide) then
+  begin
+    mmoHide:= True;
+    mmoResultado.Hide;
+    pnlMemo.Hide;
+    pnl11.Hide;
+
+  end
+  else
+  begin
+     mmoHide:= False;
+     mmoResultado.Show;
+     pnlMemo.Show;
+     pnl11.Show;
+
+  end;
+
+end;
+
+procedure TForm1.pnl10Click(Sender: TObject);
+var
+  Form2: TForm2;
+begin
+  Form2:= TForm2.Create(nil);
+  TForm2.showModal;
+  FreeAndNil(Form2);
 end;
 
 end.
