@@ -508,7 +508,6 @@ begin
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
-    valorResultado:=0;
   end
   else
   begin
@@ -534,14 +533,11 @@ begin
         valor2:=StrToFloat(edtResult.Text);
         RealizarOperacao(nil);
         histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-        if mmoResultado.Lines[0] = histOperacoes then
-        else
-          mmoResultado.Lines.Insert(0,histOperacoes);
+        mmoResultado.Lines.Insert(0,histOperacoes);
         valor1:=valorResultado;
         oper:='+';
         lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
         edtResult.Text:=FloatToStr(valor1);
-        valorResultado:=0;
       end;
 
     end;
@@ -572,7 +568,6 @@ begin
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
-    valorResultado:=0;
 
   end
   else
@@ -607,7 +602,6 @@ begin
         lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
         edtResult.Text:='0';
         TemVirgula:=False;
-        valorResultado:=0;
       end;
     end;
   end;
@@ -622,7 +616,6 @@ begin
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
-    valorResultado:=0;
 
   end
   else
@@ -656,7 +649,6 @@ begin
         lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
         edtResult.Text:='0';
         TemVirgula:=False;
-        valorResultado:=0;
       end;
     end;
   end;
@@ -671,7 +663,6 @@ begin
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
-    valorResultado:=0;
 
   end
   else
@@ -709,7 +700,6 @@ begin
           lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
           edtResult.Text:='0';
           TemVirgula:=False;
-          valorResultado:=0;
         end;
       end
       else
@@ -763,11 +753,7 @@ begin
       end;
     end;
 //    mmoResultado.Lines.Add(lblResult.Caption);
-    histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-    if mmoResultado.Lines[0] = histOperacoes then
-        else
-          mmoResultado.Lines.Insert(0,histOperacoes);
-//    mmoResultado.Lines.Insert(0,lblResult.Caption);
+    mmoResultado.Lines.Insert(0,lblResult.Caption);
   end
   else
   begin
