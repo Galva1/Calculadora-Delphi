@@ -754,36 +754,52 @@ end;
 
 procedure TForm1.pnlResultClick(Sender: TObject);
 var VerificarVirgula, i:integer;
+ArmazenamentoValor:Extended;
 begin
   if (not(oper='')) then
   begin
-    valor2:=StrToFloat(edtResult.Text);
     temVirgula:= False;
     temNegativo:= False;
     jahouveResultado:= True;
 
     if(oper='+') then
     begin
+      valor2:=StrToFloat(edtResult.Text);
       valorResultado:= valor1+valor2;
       edtResult.Text:=FloatToStr(valorResultado);
       lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+      valor1:= valor2;
     end;
     if (oper='-') then
     begin
+      valor2:=StrToFloat(edtResult.Text);
       valorResultado:= valor1-valor2;
       edtResult.Text:=FloatToStr(valorResultado);
       lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+      valor1:= valor2;
     end;
     if (oper='x') then
     begin
-      valorResultado:= valor1*valor2;
-      edtResult.Text:=FloatToStr(valorResultado);
-      lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+      if valorResultado= 2 then
+      begin
+        edtResult.Text:=FloatToStr(valorResultado);
+        lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+
+      end
+      else
+      begin
+        valor2:=StrToFloat(edtResult.Text);
+        valorResultado:= valor1*valor2;
+        edtResult.Text:=FloatToStr(valorResultado);
+        lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+      end;
+
     end;
     if (oper='/') then
     begin
       if not(valor2=0) then
       begin
+        valor2:=StrToFloat(edtResult.Text);
         valorResultado:= valor1/valor2;
         edtResult.Text:=FloatToStr(valorResultado);
         lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
