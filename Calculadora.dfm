@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 206
-  Top = 188
+  Left = 361
+  Top = 129
   Width = 921
   Height = 654
   Caption = 'fCalculadora'
@@ -10,20 +10,21 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Menu = mm1
   OldCreateOrder = False
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnlFundoTotal: TPanel
-    Left = 120
-    Top = 24
+    Left = 0
+    Top = 0
     Width = 361
-    Height = 577
+    Height = 561
     Color = cl3DDkShadow
     TabOrder = 0
     object pnlFundoResultado: TPanel
       Left = 8
-      Top = 80
+      Top = 64
       Width = 345
       Height = 73
       TabOrder = 0
@@ -48,7 +49,7 @@ object Form1: TForm1
     end
     object pnlFundoDigitos: TPanel
       Left = 8
-      Top = 160
+      Top = 144
       Width = 345
       Height = 409
       Color = cl3DDkShadow
@@ -356,28 +357,10 @@ object Form1: TForm1
         OnClick = pnlDeleteClick
       end
     end
-    object pnl12: TPanel
-      Left = 296
-      Top = 8
-      Width = 57
-      Height = 17
-      Caption = 'Hist'#243'rico'
-      TabOrder = 2
-      OnClick = pnl12Click
-    end
-    object pnlOpcoes: TPanel
-      Left = 232
-      Top = 8
-      Width = 57
-      Height = 17
-      Caption = 'Op'#231#245'es'
-      TabOrder = 3
-      OnClick = pnlOpcoesClick
-    end
   end
   object pnlFundolblResultado: TPanel
-    Left = 224
-    Top = 53
+    Left = 104
+    Top = 13
     Width = 249
     Height = 44
     Color = cl3DDkShadow
@@ -404,28 +387,71 @@ object Form1: TForm1
     end
   end
   object pnlMemo: TPanel
-    Left = 480
-    Top = 24
+    Left = 360
+    Top = 0
     Width = 337
-    Height = 576
+    Height = 561
     Color = cl3DDkShadow
     TabOrder = 2
+    Visible = False
     object mmoResultado: TMemo
       Left = 1
       Top = 1
       Width = 335
       Height = 505
       Align = alTop
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
     end
     object pnl11: TPanel
       Left = 272
       Top = 512
       Width = 57
-      Height = 57
+      Height = 41
       Caption = 'Delete'
       TabOrder = 1
       OnClick = pnl11Click
+    end
+    object pnlFecharMemo: TPanel
+      Left = 8
+      Top = 528
+      Width = 49
+      Height = 25
+      Caption = 'Fechar'
+      TabOrder = 2
+      OnClick = pnlFecharMemoClick
+    end
+  end
+  object mm1: TMainMenu
+    Left = 728
+    Top = 16
+    object este1: TMenuItem
+      Caption = 'Estilos'
+      object Estilos1: TMenuItem
+        Caption = 'Dark (padr'#227'o)'
+        OnClick = Estilos1Click
+      end
+      object D1: TMenuItem
+        Caption = 'Yellow'
+        OnClick = D1Click
+      end
+      object Purple1: TMenuItem
+        Caption = 'Purple'
+        OnClick = Purple1Click
+      end
+      object eal1: TMenuItem
+        Caption = 'Teal'
+        OnClick = eal1Click
+      end
+    end
+    object Histrico1: TMenuItem
+      Caption = 'Hist'#243'rico'
+      OnClick = Histrico1Click
     end
   end
 end

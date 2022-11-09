@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls;
+  Dialogs, StdCtrls, ExtCtrls,
+  Menus;
 
 type
   TForm1 = class(TForm)
@@ -38,8 +39,14 @@ type
     pnlMemo: TPanel;
     mmoResultado: TMemo;
     pnl11: TPanel;
-    pnl12: TPanel;
-    pnlOpcoes: TPanel;
+    mm1: TMainMenu;
+    este1: TMenuItem;
+    Estilos1: TMenuItem;
+    D1: TMenuItem;
+    Purple1: TMenuItem;
+    eal1: TMenuItem;
+    Histrico1: TMenuItem;
+    pnlFecharMemo: TPanel;
     procedure pnl7Click(Sender: TObject);
     procedure pnl8Click(Sender: TObject);
     procedure pnl9Click(Sender: TObject);
@@ -67,8 +74,13 @@ type
     procedure edtResultChange(Sender: TObject);
     procedure edtResultKeyPress(Sender: TObject; var Key: Char);
     procedure RealizarOperacao(Sender: TOBject);
-    procedure pnl12Click(Sender: TObject);
     procedure pnlOpcoesClick(Sender: TObject);
+    procedure Estilos1Click(Sender: TObject);
+    procedure D1Click(Sender: TObject);
+    procedure Purple1Click(Sender: TObject);
+    procedure eal1Click(Sender: TObject);
+    procedure Histrico1Click(Sender: TObject);
+    procedure pnlFecharMemoClick(Sender: TObject);
   private
     { Private declarations }
     temVirgula, temNegativo, jahouveResultado, podeReiniciar, mmoHide: Boolean;
@@ -468,7 +480,7 @@ begin
  oper:='';
  valorResultado:= 0.000001;
  podeReiniciar:= False;
- mmoHide:= False;
+ mmoHide:= True;
 end;
 
 procedure TForm1.pnlNegativoClick(Sender: TObject);
@@ -513,6 +525,9 @@ begin
   begin
     oper:='+';
     valor1:=valorResultado;
+    temVirgula:= False;
+    temNegativo:= False;
+    edtResult.Text:='0';
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
     valorResultado:=0;
@@ -576,6 +591,9 @@ begin
   if edtResult.Text=FloatToStr(valorResultado) then
   begin
     oper:='-';
+    temVirgula:= False;
+    temNegativo:= False;
+    edtResult.Text:='0';
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
@@ -626,6 +644,9 @@ begin
   if edtResult.Text=FloatToStr(valorResultado) then
   begin
     oper:='x';
+    temVirgula:= False;
+    temNegativo:= False;
+    edtResult.Text:='0';
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
@@ -675,6 +696,9 @@ begin
   if edtResult.Text=FloatToStr(valorResultado) then
   begin
     oper:='/';
+    temVirgula:= False;
+    temNegativo:= False;
+    edtResult.Text:='0';
     valor1:=valorResultado;
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
@@ -913,7 +937,55 @@ begin
 
 end;
 
-procedure TForm1.pnl12Click(Sender: TObject);
+
+procedure TForm1.pnlOpcoesClick(Sender: TObject);
+begin
+  try
+    formOpcoes := TFormOpcoes.Create(self);
+    formOpcoes.ShowModal;
+  finally
+    FormOpcoes.Free;
+  end;
+end;
+
+procedure TForm1.Estilos1Click(Sender: TObject);
+begin
+  Form1.pnlFundoDigitos.Color := cl3DDkShadow;
+  Form1.pnlFundoTotal.Color:= cl3DDkShadow; {clYellow; }
+  Form1.pnlFundoResultado.Color := clBtnFace;
+  Form1.pnlFundolblResultado.Color := cl3DDkShadow;
+  Form1.pnlMemo.Color := cl3DDkShadow;
+end;
+
+
+procedure TForm1.D1Click(Sender: TObject);
+begin
+  Form1.pnlFundoDigitos.Color := $0000B0B0;
+  Form1.pnlFundoTotal.Color := clYellow; {clYellow; }
+  Form1.pnlFundoResultado.Color := $0000B0B0;
+  Form1.pnlFundolblResultado.Color := $0000B0B0;
+  Form1.pnlMemo.Color := clYellow;
+end;
+
+procedure TForm1.Purple1Click(Sender: TObject);
+begin
+  Form1.pnlFundoDigitos.Color := clPurple;
+  Form1.pnlFundoTotal.Color := clPurple; {clYellow; }
+  Form1.pnlFundoResultado.Color := $00FAA3DB;
+  Form1.pnlFundolblResultado.Color := $00FAA3DB;
+  Form1.pnlMemo.Color := clPurple;
+end;
+
+procedure TForm1.eal1Click(Sender: TObject);
+begin
+  Form1.pnlFundoDigitos.Color := clTeal;
+  Form1.pnlFundoTotal.Color := clTeal; {clYellow; }
+  Form1.pnlFundoResultado.Color := $00C6BC00;
+  Form1.pnlFundolblResultado.Color := $00C6BC00;
+  Form1.pnlMemo.Color := clTeal;
+end;
+
+procedure TForm1.Histrico1Click(Sender: TObject);
 begin
   if not(mmoHide) then
   begin
@@ -931,16 +1003,25 @@ begin
      pnl11.Show;
 
   end;
-
 end;
 
-procedure TForm1.pnlOpcoesClick(Sender: TObject);
+procedure TForm1.pnlFecharMemoClick(Sender: TObject);
 begin
-  try
-    formOpcoes := TFormOpcoes.Create(self);
-    formOpcoes.ShowModal;
-  finally
-    FormOpcoes.Free;
+  if not(mmoHide) then
+  begin
+    mmoHide:= True;
+    mmoResultado.Hide;
+    pnlMemo.Hide;
+    pnl11.Hide;
+
+  end
+  else
+  begin
+     mmoHide:= False;
+     mmoResultado.Show;
+     pnlMemo.Show;
+     pnl11.Show;
+
   end;
 end;
 
