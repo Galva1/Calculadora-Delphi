@@ -34,7 +34,7 @@ type
     pnlNegativo: TPanel;
     pnlDelete: TPanel;
     pnlFundolblResultado: TPanel;
-    Panel5: TPanel;
+    pnl10: TPanel;
     lblResult: TLabel;
     pnlMemo: TPanel;
     mmoResultado: TMemo;
@@ -74,13 +74,13 @@ type
     procedure edtResultChange(Sender: TObject);
     procedure edtResultKeyPress(Sender: TObject; var Key: Char);
     procedure RealizarOperacao(Sender: TOBject);
-    procedure pnlOpcoesClick(Sender: TObject);
     procedure Estilos1Click(Sender: TObject);
     procedure D1Click(Sender: TObject);
     procedure Purple1Click(Sender: TObject);
     procedure eal1Click(Sender: TObject);
     procedure Histrico1Click(Sender: TObject);
     procedure pnlFecharMemoClick(Sender: TObject);
+    function MudarCor(cor:String):String;
   private
     { Private declarations }
     temVirgula, temNegativo, jahouveResultado, podeReiniciar, mmoHide: Boolean;
@@ -787,6 +787,8 @@ begin
         valorResultado:= valor1/valor2;
         edtResult.Text:=FloatToStr(valorResultado);
         lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+        valor1:= valor2;
+
       end
       else
       begin
@@ -938,51 +940,129 @@ begin
 end;
 
 
-procedure TForm1.pnlOpcoesClick(Sender: TObject);
-begin
-  try
-    formOpcoes := TFormOpcoes.Create(self);
-    formOpcoes.ShowModal;
-  finally
-    FormOpcoes.Free;
-  end;
-end;
+//procedure TForm1.pnlOpcoesClick(Sender: TObject);
+//begin
+//  try
+//    formOpcoes := TFormOpcoes.Create(self);
+//    formOpcoes.ShowModal;
+//  finally
+//    FormOpcoes.Free;
+//  end;
+//end;
 
 procedure TForm1.Estilos1Click(Sender: TObject);
 begin
-  Form1.pnlFundoDigitos.Color := cl3DDkShadow;
-  Form1.pnlFundoTotal.Color:= cl3DDkShadow; {clYellow; }
+  MudarCor('Dark');
+  Form1.pnlAc.Color := clMaroon;
+  Form1.pnlC.Color := clMaroon;
   Form1.pnlFundoResultado.Color := clBtnFace;
-  Form1.pnlFundolblResultado.Color := cl3DDkShadow;
+  Form1.pnl11.Color:= clBtnFace;
+  Form1.pnl10.Color:= clBtnFace;
   Form1.pnlMemo.Color := cl3DDkShadow;
+  Form1.pnlFundoDigitos.Color := cl3DDkShadow;
+  Form1.pnlFundoTotal.Color:= cl3DDkShadow;
+  Form1.pnlFundolblResultado.Color := cl3DDkShadow;
+  Form1.mmoResultado.Color:= clWindow;
+  Form1.edtResult.Color:=clBtnFace;
+
 end;
 
 
 procedure TForm1.D1Click(Sender: TObject);
 begin
-  Form1.pnlFundoDigitos.Color := $0000B0B0;
-  Form1.pnlFundoTotal.Color := clYellow; {clYellow; }
+  MudarCor('Yellow');
+  Form1.pnlAc.Color := clMaroon;
+  Form1.pnlC.Color := clMaroon;
   Form1.pnlFundoResultado.Color := $0000B0B0;
-  Form1.pnlFundolblResultado.Color := $0000B0B0;
+  Form1.pnl11.Color:= $0000B0B0;
+  Form1.pnl10.Color:= $00DAFDFE;
   Form1.pnlMemo.Color := clYellow;
+  Form1.pnlFundoDigitos.Color := $0000B0B0;
+  Form1.pnlFundoTotal.Color:= clYellow;
+  Form1.pnlFundolblResultado.Color := $0000B0B0;
+  Form1.mmoResultado.Color:= $00DAFDFE;
+  Form1.edtResult.Color:=$00DAFDFE;
+
+
+
 end;
 
 procedure TForm1.Purple1Click(Sender: TObject);
 begin
-  Form1.pnlFundoDigitos.Color := clPurple;
-  Form1.pnlFundoTotal.Color := clPurple; {clYellow; }
-  Form1.pnlFundoResultado.Color := $00FAA3DB;
-  Form1.pnlFundolblResultado.Color := $00FAA3DB;
+  MudarCor('Purple');
+  Form1.pnlAc.Color := clMaroon;
+  Form1.pnlC.Color := clMaroon;
+  Form1.pnlFundoResultado.Color := $00FBBFF0;
+  Form1.pnl11.Color:= $00FBBFF0;
+  Form1.pnl10.Color:= $00FCD1F4;
   Form1.pnlMemo.Color := clPurple;
+  Form1.pnlFundoDigitos.Color := clPurple;
+  Form1.pnlFundoTotal.Color:= clPurple;
+  Form1.pnlFundolblResultado.Color := $00FBBFF0;
+  Form1.mmoResultado.Color:= $00FCD1F4;
+  Form1.edtResult.Color:=$00FCD1F4;
+
+
 end;
 
 procedure TForm1.eal1Click(Sender: TObject);
 begin
-  Form1.pnlFundoDigitos.Color := clTeal;
-  Form1.pnlFundoTotal.Color := clTeal; {clYellow; }
+  MudarCor('Teal');
+  Form1.pnlAc.Color := clMaroon;
+  Form1.pnlC.Color := clMaroon;
   Form1.pnlFundoResultado.Color := $00C6BC00;
-  Form1.pnlFundolblResultado.Color := $00C6BC00;
+  Form1.pnl11.Color:= $00C6BC00;
+  Form1.pnl10.Color:= $00F2FF82;
   Form1.pnlMemo.Color := clTeal;
+  Form1.pnlFundoDigitos.Color := clTeal;
+  Form1.pnlFundoTotal.Color:= clTeal;
+  Form1.pnlFundolblResultado.Color := clTeal;
+  Form1.mmoResultado.Color:= $00F2FF82;
+  Form1.edtResult.Color:=$00F2FF82;
+
+end;
+
+function TForm1.MudarCor(cor:String):String;
+var
+  i: integer;
+
+const
+  num=[0..9];
+begin
+  with Form1 do
+  begin
+    for i:=0 to ComponentCount -1 do
+    begin
+      if(Components[i] is TPanel) then
+      begin
+        if((TPanel(Components[i]).Caption >= '0') and (TPanel(Components[i]).Caption <= '9')) then
+        begin
+          if(cor='Dark') then
+            TPanel(Components[i]).Color:= clBtnFace;
+          if(cor='Yellow') then
+            TPanel(Components[i]).Color:= $00A0FAFC;
+          if(cor='Purple') then
+            TPanel(Components[i]).Color:= $00FAA3DB;;
+          if(cor='Teal') then
+            TPanel(Components[i]).Color:= $00F2FF82;
+        end
+        else
+        begin
+        if(cor='Dark') then
+          TPanel(Components[i]).Color:= clBtnFace;
+        if(cor='Yellow') then
+          TPanel(Components[i]).Color:= $00A0FAFC;
+        if(cor='Purple') then
+          TPanel(Components[i]).Color:= $00FAA3DB;
+        if(cor='Teal') then
+          TPanel(Components[i]).Color:= $00F2FF82;
+        end;
+      end;
+    end;
+
+  end;
+
+
 end;
 
 procedure TForm1.Histrico1Click(Sender: TObject);
@@ -993,7 +1073,6 @@ begin
     mmoResultado.Hide;
     pnlMemo.Hide;
     pnl11.Hide;
-
   end
   else
   begin
@@ -1001,7 +1080,6 @@ begin
      mmoResultado.Show;
      pnlMemo.Show;
      pnl11.Show;
-
   end;
 end;
 
@@ -1013,7 +1091,6 @@ begin
     mmoResultado.Hide;
     pnlMemo.Hide;
     pnl11.Hide;
-
   end
   else
   begin
@@ -1021,7 +1098,6 @@ begin
      mmoResultado.Show;
      pnlMemo.Show;
      pnl11.Show;
-
   end;
 end;
 

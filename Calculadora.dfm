@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 361
-  Top = 129
+  Left = 221
+  Top = 115
   Width = 921
   Height = 654
   Caption = 'fCalculadora'
@@ -365,7 +365,7 @@ object Form1: TForm1
     Height = 44
     Color = cl3DDkShadow
     TabOrder = 1
-    object Panel5: TPanel
+    object pnl10: TPanel
       Left = 8
       Top = 8
       Width = 233
@@ -428,7 +428,7 @@ object Form1: TForm1
     end
   end
   object mm1: TMainMenu
-    Left = 728
+    Left = 16
     Top = 16
     object este1: TMenuItem
       Caption = 'Estilos'
