@@ -346,7 +346,7 @@ object Form1: TForm1
         Top = 336
         Width = 73
         Height = 65
-        Caption = 'Del'
+        Caption = '<='
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -27
@@ -400,6 +400,7 @@ object Form1: TForm1
       Width = 335
       Height = 505
       Align = alTop
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -413,18 +414,9 @@ object Form1: TForm1
       Top = 512
       Width = 57
       Height = 41
-      Caption = 'Delete'
+      Caption = 'Limpar'
       TabOrder = 1
       OnClick = pnl11Click
-    end
-    object pnlFecharMemo: TPanel
-      Left = 8
-      Top = 528
-      Width = 49
-      Height = 25
-      Caption = 'Fechar'
-      TabOrder = 2
-      OnClick = pnlFecharMemoClick
     end
   end
   object mm1: TMainMenu
@@ -433,19 +425,19 @@ object Form1: TForm1
     object este1: TMenuItem
       Caption = 'Estilos'
       object Estilos1: TMenuItem
-        Caption = 'Dark (padr'#227'o)'
+        Caption = 'Escuro (padr'#227'o)'
         OnClick = Estilos1Click
       end
       object D1: TMenuItem
-        Caption = 'Yellow'
+        Caption = 'Amarelo'
         OnClick = D1Click
       end
       object Purple1: TMenuItem
-        Caption = 'Purple'
+        Caption = 'Roxo'
         OnClick = Purple1Click
       end
       object eal1: TMenuItem
-        Caption = 'Teal'
+        Caption = 'Verde-azulado'
         OnClick = eal1Click
       end
     end

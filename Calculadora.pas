@@ -46,7 +46,6 @@ type
     Purple1: TMenuItem;
     eal1: TMenuItem;
     Histrico1: TMenuItem;
-    pnlFecharMemo: TPanel;
     procedure pnl7Click(Sender: TObject);
     procedure pnl8Click(Sender: TObject);
     procedure pnl9Click(Sender: TObject);
