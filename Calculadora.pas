@@ -839,7 +839,7 @@ end;
 
 procedure TForm1.edtResultKeyPress(Sender: TObject; var Key: Char);
 begin
-  if not(Key in['0'..'9',',',#8,'+','*','-','/',#13])then
+  if not(Key in['0'..'9',',',#8,'+','*','-','/',#13,#27]) then
   begin
     key:=#0;
   end
@@ -934,6 +934,10 @@ begin
     if(Key in([#13])) then
     begin
       pnlResultClick(nil);
+    end;
+    if(Key in([#27])) then
+    begin
+      pnlACClick(nil);
     end;
   end;
 
