@@ -46,7 +46,6 @@ object Form1: TForm1
         OnChange = edtResultChange
         OnKeyPress = edtResultKeyPress
         OnMouseDown = edtResultMouseDown
-        OnMouseUp = edtResultMouseUp
       end
     end
     object pnlFundoDigitos: TPanel

@@ -82,8 +82,6 @@ type
     function MudarCor(cor:String):String;
     procedure edtResultMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure edtResultMouseUp(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
     temVirgula, temNegativo, jahouveResultado, podeReiniciar, mmoHide: Boolean;
@@ -1142,17 +1140,10 @@ procedure TForm1.edtResultMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   Clipboard.Destroy;
-  if Button = MbRight then
-    
-
-
+  if edtResult.SelLength>0 then
+    edtResult.SelLength:= 0;
+//  if Button = MbRight then
 //    Clipboard.AsText:= '';
-end;
-
-procedure TForm1.edtResultMouseUp(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
-begin
-  Clipboard.Clear;
 end;
 
 end.
