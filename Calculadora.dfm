@@ -1,9 +1,9 @@
 object Form1: TForm1
-  Left = 451
-  Top = 133
-  Width = 921
-  Height = 654
-  Caption = 'fCalculadora'
+  Left = 725
+  Top = 101
+  Width = 713
+  Height = 695
+  Caption = 'Calculadora'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -45,6 +45,8 @@ object Form1: TForm1
         Text = '0'
         OnChange = edtResultChange
         OnKeyPress = edtResultKeyPress
+        OnMouseDown = edtResultMouseDown
+        OnMouseUp = edtResultMouseUp
       end
     end
     object pnlFundoDigitos: TPanel
@@ -357,32 +359,32 @@ object Form1: TForm1
         OnClick = pnlDeleteClick
       end
     end
-  end
-  object pnlFundolblResultado: TPanel
-    Left = 104
-    Top = 13
-    Width = 249
-    Height = 44
-    Color = cl3DDkShadow
-    TabOrder = 1
-    object pnl10: TPanel
-      Left = 8
-      Top = 8
-      Width = 233
-      Height = 25
-      TabOrder = 0
-      object lblResult: TLabel
-        Left = 228
-        Top = 1
-        Width = 4
-        Height = 23
-        Align = alRight
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
+    object pnlFundolblResultado: TPanel
+      Left = 104
+      Top = 13
+      Width = 249
+      Height = 44
+      Color = cl3DDkShadow
+      TabOrder = 2
+      object pnl10: TPanel
+        Left = 8
+        Top = 8
+        Width = 233
+        Height = 25
+        TabOrder = 0
+        object lblResult: TLabel
+          Left = 228
+          Top = 1
+          Width = 4
+          Height = 23
+          Align = alRight
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+        end
       end
     end
   end
@@ -392,7 +394,7 @@ object Form1: TForm1
     Width = 337
     Height = 561
     Color = cl3DDkShadow
-    TabOrder = 2
+    TabOrder = 1
     Visible = False
     object mmoResultado: TMemo
       Left = 1

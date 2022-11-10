@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls,
+  Dialogs, StdCtrls, ExtCtrls, Clipbrd,
   Menus;
 
 type
@@ -33,9 +33,6 @@ type
     pnlAC: TPanel;
     pnlNegativo: TPanel;
     pnlDelete: TPanel;
-    pnlFundolblResultado: TPanel;
-    pnl10: TPanel;
-    lblResult: TLabel;
     pnlMemo: TPanel;
     mmoResultado: TMemo;
     pnl11: TPanel;
@@ -46,6 +43,9 @@ type
     Purple1: TMenuItem;
     eal1: TMenuItem;
     Histrico1: TMenuItem;
+    pnlFundolblResultado: TPanel;
+    pnl10: TPanel;
+    lblResult: TLabel;
     procedure pnl7Click(Sender: TObject);
     procedure pnl8Click(Sender: TObject);
     procedure pnl9Click(Sender: TObject);
@@ -80,6 +80,10 @@ type
     procedure Histrico1Click(Sender: TObject);
     procedure pnlFecharMemoClick(Sender: TObject);
     function MudarCor(cor:String):String;
+    procedure edtResultMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure edtResultMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
     temVirgula, temNegativo, jahouveResultado, podeReiniciar, mmoHide: Boolean;
@@ -390,7 +394,15 @@ verificarVirgula, verificarNegativo: Integer;
 begin
   if (edtResult.Text='0') or (edtResult.Text=FloatToStr(valorResultado)) then
     begin
-    edtResult.Text:='0';
+      edtResult.Text:=FloatToStr(valor1);
+      valor2:=0;
+      valorResultado:=0;
+      lblResult.Caption:=FloatToStr(valor1)+' '+oper;
+      edtResult.Text:='0';
+      temVirgula:=False;
+      temNegativo:=False;
+      jahouveResultado:=False;
+
     end
   else
   begin
@@ -471,6 +483,10 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+// Form1.ClientWidth:=pnlFundoTotal.Width+10;
+// Form1.ClientHeight:=pnlFundoTotal.Height+10;
+AutoSize:=True;
+
  temVirgula := False;
  jahouveResultado := False;
  temNegativo := False;
@@ -549,6 +565,7 @@ begin
         oper:='+';
         valor1:=StrToFloat(edtResult.Text);
         lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
+        edtResult.Text:='0';
       end
       else
       begin
@@ -560,8 +577,9 @@ begin
           mmoResultado.Lines.Insert(0,histOperacoes);
         valor1:=valorResultado;
         oper:='+';
+        edtResult.Text:='0';
         lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-        edtResult.Text:=FloatToStr(valor1);
+
         valorResultado:=0;
       end;
 
@@ -767,7 +785,6 @@ begin
       valorResultado:= valor1+valor2;
       edtResult.Text:=FloatToStr(valorResultado);
       lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-      valor1:= valor2;
     end;
     if (oper='-') then
     begin
@@ -775,7 +792,6 @@ begin
       valorResultado:= valor1-valor2;
       edtResult.Text:=FloatToStr(valorResultado);
       lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-      valor1:= valor2;
     end;
     if (oper='x') then
     begin
@@ -802,7 +818,7 @@ begin
         valorResultado:= valor1/valor2;
         edtResult.Text:=FloatToStr(valorResultado);
         lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-        valor1:= valor2;
+
 
       end
       else
@@ -1088,6 +1104,7 @@ procedure TForm1.Histrico1Click(Sender: TObject);
 begin
   if not(mmoHide) then
   begin
+//    Form1.Width:=Form1.Width-pnlMemo.Width-10;
     mmoHide:= True;
     mmoResultado.Hide;
     pnlMemo.Hide;
@@ -1095,6 +1112,7 @@ begin
   end
   else
   begin
+//     Form1.Width:=Form1.Width+pnlMemo.Width+10;
      mmoHide:= False;
      mmoResultado.Show;
      pnlMemo.Show;
@@ -1118,6 +1136,23 @@ begin
      pnlMemo.Show;
      pnl11.Show;
   end;
+end;
+
+procedure TForm1.edtResultMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  Clipboard.Destroy;
+  if Button = MbRight then
+    
+
+
+//    Clipboard.AsText:= '';
+end;
+
+procedure TForm1.edtResultMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  Clipboard.Clear;
 end;
 
 end.
