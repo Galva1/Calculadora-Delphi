@@ -1,8 +1,9 @@
 object Form1: TForm1
-  Left = 725
-  Top = 101
-  Width = 713
-  Height = 695
+  Left = 545
+  Top = 123
+  Width = 377
+  Height = 620
+  AutoSize = True
   Caption = 'Calculadora'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,9 +13,42 @@ object Form1: TForm1
   Font.Style = []
   Menu = mm1
   OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object pnlMemo: TPanel
+    Left = 358
+    Top = 0
+    Width = 0
+    Height = 561
+    Color = cl3DDkShadow
+    TabOrder = 1
+    object mmoResultado: TMemo
+      Left = 1
+      Top = 1
+      Width = 338
+      Height = 505
+      Align = alTop
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
+    object pnl11: TPanel
+      Left = 272
+      Top = 512
+      Width = 57
+      Height = 41
+      Caption = 'Limpar'
+      TabOrder = 1
+      OnClick = pnl11Click
+    end
+  end
   object pnlFundoTotal: TPanel
     Left = 0
     Top = 0
@@ -50,7 +84,7 @@ object Form1: TForm1
     end
     object pnlFundoDigitos: TPanel
       Left = 8
-      Top = 144
+      Top = 136
       Width = 345
       Height = 409
       Color = cl3DDkShadow
@@ -385,39 +419,6 @@ object Form1: TForm1
           ParentFont = False
         end
       end
-    end
-  end
-  object pnlMemo: TPanel
-    Left = 360
-    Top = 0
-    Width = 337
-    Height = 561
-    Color = cl3DDkShadow
-    TabOrder = 1
-    Visible = False
-    object mmoResultado: TMemo
-      Left = 1
-      Top = 1
-      Width = 335
-      Height = 505
-      Align = alTop
-      Enabled = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-    end
-    object pnl11: TPanel
-      Left = 272
-      Top = 512
-      Width = 57
-      Height = 41
-      Caption = 'Limpar'
-      TabOrder = 1
-      OnClick = pnl11Click
     end
   end
   object mm1: TMainMenu

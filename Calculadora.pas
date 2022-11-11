@@ -78,13 +78,12 @@ type
     procedure Purple1Click(Sender: TObject);
     procedure eal1Click(Sender: TObject);
     procedure Histrico1Click(Sender: TObject);
-    procedure pnlFecharMemoClick(Sender: TObject);
     function MudarCor(cor:String):String;
     procedure edtResultMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
-    temVirgula, temNegativo, jahouveResultado, podeReiniciar, mmoHide: Boolean;
+    temVirgula, temNegativo, jahouveResultado, podeReiniciar: Boolean;
     valor1, valor2, valorResultado: Extended;
     oper, histOperacoes: string;
   public
@@ -107,255 +106,14 @@ begin
   if jaHouveResultado then
   begin
     ResetarNumeros(nil);
-    Result:='Substituir';
-  end
-  else
-    Result:='Inserir';
-
-end;
-
-
-procedure TForm1.pnl7Click(Sender: TObject);
-begin
-  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
-  begin
-    edtResult.Text:='7';
-    ResetarNumeros(nil);
+    edtResult.Text:=NumeroDigitado;
   end
   else
   begin
-    if (edtResult.Text='0') then
-    begin
-    edtResult.Text:='7';
-    end
+    if edtResult.Text='0' then
+      edtResult.Text:=NumeroDigitado
     else
-    begin
-      if (edtResult.Text<>FloatToStr(valorResultado)) then
-        edtResult.Text:=edtResult.Text+'7'
-      else
-        edtResult.Text:='7';
-    end;
-
-  end;
-
-end;
-
-procedure TForm1.pnl8Click(Sender: TObject);
-begin
-  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
-  begin
-    edtResult.Text:='8';
-    ResetarNumeros(nil);
-  end
-  else
-  begin
-    if (edtResult.Text='0') then
-    begin
-    edtResult.Text:='8';
-    end
-    else
-    begin
-      if (edtResult.Text<>FloatToStr(valorResultado)) then
-        edtResult.Text:=edtResult.Text+'8'
-      else
-        edtResult.Text:='8';
-    end;
-
-  end;
-end;
-
-procedure TForm1.pnl9Click(Sender: TObject);
-begin
-  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
-  begin
-    edtResult.Text:='9';
-    ResetarNumeros(nil);
-  end
-  else
-  begin
-    if (edtResult.Text='0') then
-    begin
-    edtResult.Text:='9';
-    end
-    else
-    begin
-      if (edtResult.Text<>FloatToStr(valorResultado)) then
-        edtResult.Text:=edtResult.Text+'9'
-      else
-        edtResult.Text:='9';
-    end;
-
-  end;
-end;
-
-procedure TForm1.pnl4Click(Sender: TObject);
-begin
-  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
-  begin
-    edtResult.Text:='4';
-    ResetarNumeros(nil);
-  end
-  else
-  begin
-    if (edtResult.Text='0') then
-    begin
-    edtResult.Text:='4';
-    end
-    else
-    begin
-      if (edtResult.Text<>FloatToStr(valorResultado)) then
-        edtResult.Text:=edtResult.Text+'4'
-      else
-        edtResult.Text:='4';
-    end;
-
-  end;
-end;
-
-procedure TForm1.pnl5Click(Sender: TObject);
-begin
-  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
-  begin
-    edtResult.Text:='5';
-    ResetarNumeros(nil);
-  end
-  else
-  begin
-    if (edtResult.Text='0') then
-    begin
-    edtResult.Text:='5';
-    end
-    else
-    begin
-      if (edtResult.Text<>FloatToStr(valorResultado)) then
-        edtResult.Text:=edtResult.Text+'5'
-      else
-        edtResult.Text:='5';
-    end;
-
-  end;
-end;
-
-procedure TForm1.pnl6Click(Sender: TObject);
-begin
-  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
-  begin
-    edtResult.Text:='6';
-    ResetarNumeros(nil);
-  end
-  else
-  begin
-    if (edtResult.Text='0') then
-    begin
-    edtResult.Text:='6';
-    end
-    else
-    begin
-      if (edtResult.Text<>FloatToStr(valorResultado)) then
-        edtResult.Text:=edtResult.Text+'6'
-      else
-        edtResult.Text:='6';
-    end;
-
-  end;
-
-
-end;
-
-procedure TForm1.pnl1Click(Sender: TObject);
-begin
-  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
-  begin
-    edtResult.Text:='1';
-    ResetarNumeros(nil);
-  end
-  else
-  begin
-    if (edtResult.Text='0') then
-    begin
-    edtResult.Text:='1';
-    end
-    else
-    begin
-      if (edtResult.Text<>FloatToStr(valorResultado)) then
-        edtResult.Text:=edtResult.Text+'1'
-      else
-        edtResult.Text:='1';
-    end;
-
-  end;
-end;
-
-procedure TForm1.pnl2Click(Sender: TObject);
-begin
-  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
-  begin
-    edtResult.Text:='2';
-    ResetarNumeros(nil);
-  end
-  else
-  begin
-    if (edtResult.Text='0') then
-    begin
-    edtResult.Text:='2';
-    end
-    else
-    begin
-      if (edtResult.Text<>FloatToStr(valorResultado)) then
-        edtResult.Text:=edtResult.Text+'2'
-      else
-        edtResult.Text:='2';
-    end;
-
-  end;
-end;
-
-procedure TForm1.pnl3Click(Sender: TObject);
-begin
-  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
-  begin
-    edtResult.Text:='3';
-    ResetarNumeros(nil);
-  end
-  else
-  begin
-    if (edtResult.Text='0') then
-    begin
-    edtResult.Text:='3';
-    end
-    else
-    begin
-      if (edtResult.Text<>FloatToStr(valorResultado)) then
-        edtResult.Text:=edtResult.Text+'3'
-      else
-        edtResult.Text:='3';
-    end;
-
-  end;
-end;
-
-procedure TForm1.pnl0Click(Sender: TObject);
-begin
-  if (edtResult.Text=FloatToStr(valorResultado)) and (jaHouveResultado=True) then
-  begin
-
-    edtResult.Text:='0';
-    ResetarNumeros(nil);
-  end
-  else
-  begin
-    if (edtResult.Text='0') then
-    begin
-    edtResult.Text:='0';
-    end
-    else
-    begin
-      if (edtResult.Text<>FloatToStr(valorResultado)) then
-        edtResult.Text:=edtResult.Text+'0'
-      else
-        edtResult.Text:='0';
-    end;
-
+      edtResult.Text:=edtResult.Text+NumeroDigitado;
   end;
 end;
 
@@ -368,11 +126,62 @@ begin
     jaHouveResultado:= False;
 end;
 
+
+procedure TForm1.pnl7Click(Sender: TObject);
+begin
+  CheckNumeroColocado('7');
+end;
+
+procedure TForm1.pnl8Click(Sender: TObject);
+begin
+  CheckNumeroColocado('8');
+end;
+
+procedure TForm1.pnl9Click(Sender: TObject);
+begin
+  CheckNumeroColocado('9');
+end;
+
+procedure TForm1.pnl4Click(Sender: TObject);
+begin
+  CheckNumeroColocado('4');
+end;
+
+procedure TForm1.pnl5Click(Sender: TObject);
+begin
+  CheckNumeroColocado('5');
+end;
+
+procedure TForm1.pnl6Click(Sender: TObject);
+begin
+  CheckNumeroColocado('6');
+end;
+
+procedure TForm1.pnl1Click(Sender: TObject);
+begin
+  CheckNumeroColocado('1');
+end;
+
+procedure TForm1.pnl2Click(Sender: TObject);
+begin
+  CheckNumeroColocado('2');
+end;
+
+procedure TForm1.pnl3Click(Sender: TObject);
+begin
+  CheckNumeroColocado('3');
+end;
+
+procedure TForm1.pnl0Click(Sender: TObject);
+begin
+  CheckNumeroColocado('0');
+end;
+
 procedure TForm1.pnlVirgClick(Sender: TObject);
 begin
-  if temVirgula = False then
+  if not(temVirgula) then
   begin
-    if(edtResult.Text=FloatToStr(valorResultado)) then
+    if jahouveResultado then
       edtResult.Text:='0';
     edtResult.Text:=edtResult.Text+',';
     temVirgula:= True;
@@ -381,8 +190,6 @@ begin
     edtResult.Text:=edtResult.Text;
 end;
 
-
-// CLICAR EM APAGAR
 procedure TForm1.pnlDeleteClick(Sender: TObject);
 const
   number: number=[0..9];
@@ -400,23 +207,22 @@ begin
       temVirgula:=False;
       temNegativo:=False;
       jahouveResultado:=False;
-
     end
   else
   begin
       edtResult.Text:= copy(edtResult.Text,1,length(edtResult.Text)-1);
       // Operação sem virgula e com negativo
-      if (temVirgula = False) and (temNegativo = True) then
+      if not(temVirgula) and (TemNegativo) then
       begin
         verificarNegativo:=(length(edtResult.Text));
         if verificarNegativo= 1 then
           begin
-          edtResult.Text:='0';
-          temNegativo:= False;
+            edtResult.Text:='0';
+            temNegativo:= False;
           end;
       end;
     // Operação com virgula e sem negativo
-      if (temVirgula = True) and (temNegativo = False) then
+      if (temVirgula) and not(temNegativo) then
       begin
         VerificarVirgula:=0;
         try
@@ -425,17 +231,16 @@ begin
               verificarVirgula:= StrToInt(edtResult.Text[i]);
             end;
             temVirgula:=False;
+
         except
           temVirgula:=True;
         end;
       end;
-    // Fim do if
-
     // Operação com virgula e com negativo
-      if (temVirgula= True and temNegativo = True) then
+      if (temVirgula) and (temNegativo) then
       begin
         verificarVirgula:= 0;
-        VerificarNegativo:=0;
+        VerificarNegativo:= 0;
         try
           for i:=2 to length(edtResult.Text) do
           begin
@@ -444,47 +249,27 @@ begin
           temVirgula:= False;
         except
           temVirgula:=True;
-
         end;
       end;
-      end;
-if (edtResult.Text = '') then
-      edtResult.Text:='0';
+  end;
+  if(edtResult.Text = '') then
+    edtResult.Text:='0';
 end;
+
 procedure TForm1.pnlCClick(Sender: TObject);
 begin
-  if not(jaHouveResultado= True) then
+  if jaHouveResultado then
+    ResetarNumeros(nil)
+  else
   begin
     edtResult.Text:='0';
     temVirgula:=False;
     temNegativo:=False;
-  end
-  else
-  begin
-    if valor1 = valorResultado then
-      begin
-        edtResult.Text:='0';
-        temVirgula:=False;
-        temNegativo:=False;
-      end
-      else
-      begin
-        valor1:= 0;
-        valor2:= 0;
-       edtResult.Text:='0';
-        lblResult.Caption:='';
-      end;
-
-  
   end;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-// Form1.ClientWidth:=pnlFundoTotal.Width+10;
-// Form1.ClientHeight:=pnlFundoTotal.Height+10;
-AutoSize:=True;
-
  temVirgula := False;
  jahouveResultado := False;
  temNegativo := False;
@@ -493,7 +278,6 @@ AutoSize:=True;
  oper:='';
  valorResultado:= 0.000001;
  podeReiniciar:= False;
- mmoHide:= True;
 end;
 
 procedure TForm1.pnlNegativoClick(Sender: TObject);
@@ -501,23 +285,20 @@ var
   negativar: Extended;
 begin
   if (edtResult.Text = '0') then
-  begin
-    edtResult.Text:='0';
-
-  end
+    edtResult.Text:='0'
   else
   begin
-    if (edtResult.Text=FloatToStr(valorResultado)) then
+    if (jahouveResultado) then
     begin
       lblResult.Caption:='negativo('+edtResult.Text+')';
       negativar:=StrToFloat(edtResult.Text)*-1;
       jahouveResultado:= False;
       edtResult.Text:=FloatToStr(negativar);
       podeReiniciar:= True;
-        if temNegativo = False then
-          temNegativo:= True
-        else
-          temNegativo:= False;
+      if temNegativo = False then
+        temNegativo:= True
+      else
+        temNegativo:= False;
     end
     else
     begin
@@ -528,10 +309,9 @@ begin
     else
       temNegativo:= False;
     end;
-
-
   end;
 end;
+
 procedure TForm1.pnlMaisClick(Sender: TObject);
 begin
   if edtResult.Text=FloatToStr(valorResultado) then
@@ -573,19 +353,15 @@ begin
         if mmoResultado.Lines[0] = histOperacoes then
         else
           mmoResultado.Lines.Insert(0,histOperacoes);
+
         valor1:=valorResultado;
         oper:='+';
         edtResult.Text:='0';
         lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-
         valorResultado:=0;
       end;
-
     end;
-
-   end;
-
-
+  end;
 end;
 
 procedure TForm1.RealizarOperacao(Sender: TOBject);
@@ -666,7 +442,6 @@ begin
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
     valorResultado:=0;
-
   end
   else
   begin
@@ -718,7 +493,6 @@ begin
     lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
     jahouveResultado := False;
     valorResultado:=0;
-
   end
   else
   begin
@@ -762,7 +536,6 @@ begin
       begin
         ShowMessage('Não pode dividir por zero');
       end;
-
     end;
   end;
 end;
@@ -797,7 +570,6 @@ begin
       begin
         edtResult.Text:=FloatToStr(valorResultado);
         lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-
       end
       else
       begin
@@ -806,7 +578,6 @@ begin
         edtResult.Text:=FloatToStr(valorResultado);
         lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
       end;
-
     end;
     if (oper='/') then
     begin
@@ -816,20 +587,16 @@ begin
         valorResultado:= valor1/valor2;
         edtResult.Text:=FloatToStr(valorResultado);
         lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-
-
       end
       else
       begin
         ShowMessage('Não pode dividir por zero');
       end;
     end;
-//    mmoResultado.Lines.Add(lblResult.Caption);
     histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
     if mmoResultado.Lines[0] = histOperacoes then
         else
           mmoResultado.Lines.Insert(0,histOperacoes);
-//    mmoResultado.Lines.Insert(0,lblResult.Caption);
   end
   else
   begin
@@ -837,8 +604,7 @@ begin
     edtResult.Text:=edtResult.Text;
     lblResult.Caption:= FloatToStr(valor1)+' =';
   end;
-
-  end;
+end;
 
 procedure TForm1.pnlACClick(Sender: TObject);
 begin
@@ -972,17 +738,6 @@ begin
 
 end;
 
-
-//procedure TForm1.pnlOpcoesClick(Sender: TObject);
-//begin
-//  try
-//    formOpcoes := TFormOpcoes.Create(self);
-//    formOpcoes.ShowModal;
-//  finally
-//    FormOpcoes.Free;
-//  end;
-//end;
-
 procedure TForm1.Estilos1Click(Sender: TObject);
 begin
   MudarCor('Dark');
@@ -1058,9 +813,6 @@ end;
 function TForm1.MudarCor(cor:String):String;
 var
   i: integer;
-
-const
-  num=[0..9];
 begin
   with Form1 do
   begin
@@ -1092,48 +844,18 @@ begin
         end;
       end;
     end;
-
   end;
-
-
 end;
 
 procedure TForm1.Histrico1Click(Sender: TObject);
 begin
-  if not(mmoHide) then
-  begin
-//    Form1.Width:=Form1.Width-pnlMemo.Width-10;
-    mmoHide:= True;
-    mmoResultado.Hide;
-    pnlMemo.Hide;
-    pnl11.Hide;
-  end
+  if pnlMemo.Tag = 0 then
+    while pnlMemo.Width < 340 do
+      pnlMemo.Width := pnlMemo.Width + 2
   else
-  begin
-//     Form1.Width:=Form1.Width+pnlMemo.Width+10;
-     mmoHide:= False;
-     mmoResultado.Show;
-     pnlMemo.Show;
-     pnl11.Show;
-  end;
-end;
-
-procedure TForm1.pnlFecharMemoClick(Sender: TObject);
-begin
-  if not(mmoHide) then
-  begin
-    mmoHide:= True;
-    mmoResultado.Hide;
-    pnlMemo.Hide;
-    pnl11.Hide;
-  end
-  else
-  begin
-     mmoHide:= False;
-     mmoResultado.Show;
-     pnlMemo.Show;
-     pnl11.Show;
-  end;
+    while pnlMemo.Width>0 do
+      pnlMemo.Width := pnlMemo.Width - 2;
+  pnlMemo.Tag := 1 - pnlMemo.Tag;
 end;
 
 procedure TForm1.edtResultMouseDown(Sender: TObject; Button: TMouseButton;
@@ -1142,8 +864,6 @@ begin
   Clipboard.Destroy;
   if edtResult.SelLength>0 then
     edtResult.SelLength:= 0;
-//  if Button = MbRight then
-//    Clipboard.AsText:= '';
 end;
 
 end.
