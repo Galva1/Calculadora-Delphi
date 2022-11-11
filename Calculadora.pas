@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Clipbrd,
+  Dialogs, StdCtrls, ExtCtrls, Clipbrd, StrUtils,
   Menus;
 
 type
@@ -81,6 +81,8 @@ type
     function MudarCor(cor:String):String;
     procedure edtResultMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure AdicionarMemo(Sender: TObject);
+    function OperacaoSelecionada (SinalRecebido: String): String;
   private
     { Private declarations }
     temVirgula, temNegativo, jahouveResultado, podeReiniciar: Boolean;
@@ -126,6 +128,25 @@ begin
     jaHouveResultado:= False;
 end;
 
+procedure TForm1.AdicionarMemo(Sender: TObject);
+begin
+  histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+  if mmoResultado.Lines[0] = histOperacoes then
+  else
+    mmoResultado.Lines.Insert(0,histOperacoes);
+end;
+
+procedure TForm1.RealizarOperacao(Sender: TOBject);
+begin
+  if oper = '+' then
+    valorResultado:= valor1 + valor2;
+  if oper = '-' then
+    valorResultado:= valor1 - valor2;
+  if oper = 'x' then
+    valorResultado:= valor1 * valor2;
+  if oper = '/' then
+    valorResultado:= valor1 / valor2;
+end;
 
 procedure TForm1.pnl7Click(Sender: TObject);
 begin
@@ -311,233 +332,171 @@ begin
     end;
   end;
 end;
-
-procedure TForm1.pnlMaisClick(Sender: TObject);
+function TForm1.OperacaoSelecionada (SinalRecebido: String): String;
 begin
-  if edtResult.Text=FloatToStr(valorResultado) then
-  begin
-    oper:='+';
-    valor1:=valorResultado;
-    temVirgula:= False;
-    temNegativo:= False;
-    edtResult.Text:='0';
-    lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-    jahouveResultado := False;
-    valorResultado:=0;
-  end
-  else
-  begin
-    if(valor1 = 0) then
-    begin
-    oper:='+';
-    valor1:=StrToFloat(edtResult.Text);
-    lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-    temVirgula:= False;
-    temNegativo:= False;
-    edtResult.Text:='0';
-    end
-    else
-    begin
-      if  podeReiniciar = True then
+  case AnsiIndexStr((SinalRecebido),['+','-','*','/']) of
+    0:
       begin
-        oper:='+';
-        valor1:=StrToFloat(edtResult.Text);
-        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-        edtResult.Text:='0';
-      end
-      else
-      begin
-        valor2:=StrToFloat(edtResult.Text);
-        RealizarOperacao(nil);
-        histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-        if mmoResultado.Lines[0] = histOperacoes then
+        if (jahouveResultado) then
+        begin
+          oper:='+';
+          valor1:=valorResultado;
+          lblResult.Caption:= FloatToStr(valor1) + ' +';
+          jahouveResultado:= False;
+          valor2:= 0;
+          valorResultado:= 0;
+        end
         else
-          mmoResultado.Lines.Insert(0,histOperacoes);
-
-        valor1:=valorResultado;
-        oper:='+';
-        edtResult.Text:='0';
-        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-        valorResultado:=0;
+        begin
+          if valor1 = 0 then
+          begin
+            oper:='+';
+            valor1:=StrToFloat(edtResult.Text);
+            lblResult.Caption:=FloatToStr(valor1) + ' +';
+          end
+          else
+          begin
+            if valor2= 0 then
+            else
+            begin
+              RealizarOperacao(nil);
+              AdicionarMemo(nil);
+              valor1:=valorResultado;
+              oper:='+';
+              lblResult.Caption:=FloatToStr(valor1)+' -';
+              valorResultado:=0;
+            end;
+          end;
+        end;
       end;
-    end;
+
+    1:
+      begin
+        if (jahouveResultado) then
+        begin
+          oper:='-';
+          valor1:=valorResultado;
+          lblResult.Caption:= FloatToStr(valor1) + ' -';
+          jahouveResultado:= False;
+          valor2:= 0;
+          valorResultado:= 0;
+        end
+        else
+        begin
+          if valor1 = 0 then
+          begin
+            oper:='-';
+            valor1:=StrToFloat(edtResult.Text);
+            lblResult.Caption:=FloatToStr(valor1) + ' -';
+          end
+          else
+          begin
+            if valor2= 0 then
+            else
+            begin
+              RealizarOperacao(nil);
+              AdicionarMemo(nil);
+              valor1:=valorResultado;
+              oper:='-';
+              lblResult.Caption:=FloatToStr(valor1)+' -';
+              valorResultado:=0;
+            end;
+          end;
+        end;
+      end;
+    2:
+      begin
+        if (jahouveResultado) then
+        begin
+          oper:='*';
+          valor1:=valorResultado;
+          lblResult.Caption:= FloatToStr(valor1) + ' *';
+          jahouveResultado:= False;
+          valor2:= 0;
+          valorResultado:= 0;
+        end
+        else
+        begin
+          if valor1 = 0 then
+          begin
+            oper:='*';
+            valor1:=StrToFloat(edtResult.Text);
+            lblResult.Caption:=FloatToStr(valor1) + ' *';
+          end
+          else
+          begin
+            if valor2= 0 then
+            else
+            begin
+              RealizarOperacao(nil);
+              AdicionarMemo(nil);
+              valor1:=valorResultado;
+              oper:='*';
+              lblResult.Caption:=FloatToStr(valor1)+' *';
+              valorResultado:=0;
+            end;
+          end;
+        end;
+      end;
+    3:
+      begin
+        if (jahouveResultado) then
+        begin
+          oper:='+';
+          valor1:=valorResultado;
+          lblResult.Caption:= FloatToStr(valor1) + ' +';
+          jahouveResultado:= False;
+          valor2:= 0;
+          valorResultado:= 0;
+        end
+        else
+        begin
+          if valor1 = 0 then
+          begin
+            oper:='/';
+            valor1:=StrToFloat(edtResult.Text);
+            lblResult.Caption:=FloatToStr(valor1) + ' /';
+          end
+          else
+          begin
+            if valor2= 0 then
+            begin
+              ShowMessage('Não pode dividir por zero');
+            end
+            else
+            begin
+              RealizarOperacao(nil);
+              AdicionarMemo(nil);
+              valor1:=valorResultado;
+              oper:='/';
+              lblResult.Caption:=FloatToStr(valor1)+' /';
+              valorResultado:=0;
+            end;
+          end;
+        end;
+      end;
+
   end;
 end;
 
-procedure TForm1.RealizarOperacao(Sender: TOBject);
+procedure TForm1.pnlMaisClick(Sender: TObject);
 begin
-  if oper = '+' then
-    valorResultado:= valor1 + valor2;
-  if oper = '-' then
-    valorResultado:= valor1 - valor2;
-  if oper = 'x' then
-    valorResultado:= valor1 * valor2;
-  if oper = '/' then
-    valorResultado:= valor1 / valor2;
+  OperacaoSelecionada('+');
 end;
 
 procedure TForm1.pnlMenosClick(Sender: TObject);
 begin
-
-  if edtResult.Text=FloatToStr(valorResultado) then
-  begin
-    oper:='-';
-    temVirgula:= False;
-    temNegativo:= False;
-    edtResult.Text:='0';
-    valor1:=valorResultado;
-    lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-    jahouveResultado := False;
-    valorResultado:=0;
-
-  end
-  else
-  begin
-    if(valor1 = 0) then
-    begin
-      oper:='-';
-      valor1:=StrToFloat(edtResult.Text);
-      TemVirgula:= False;
-      lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-      edtResult.Text:='0';
-      temNegativo:= False;
-    end
-    else
-    begin
-      if  podeReiniciar = True then
-      begin
-        oper:='-';
-        valor1:=StrToFloat(edtResult.Text);
-        TemVirgula:= False;
-        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-        edtResult.Text:='0';
-      end
-      else
-      begin
-        valor2:=StrToFloat(edtResult.Text);
-        RealizarOperacao(nil);
-        histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-        mmoResultado.Lines.Insert(0,histOperacoes);
-        valor1:=valorResultado;
-        oper:='-';
-        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-        edtResult.Text:='0';
-        TemVirgula:=False;
-        valorResultado:=0;
-      end;
-    end;
-  end;
-
+  OperacaoSelecionada('-');
 end;
 
 procedure TForm1.pnlMultClick(Sender: TObject);
 begin
-  if edtResult.Text=FloatToStr(valorResultado) then
-  begin
-    oper:='x';
-    temVirgula:= False;
-    temNegativo:= False;
-    edtResult.Text:='0';
-    valor1:=valorResultado;
-    lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-    jahouveResultado := False;
-    valorResultado:=0;
-  end
-  else
-  begin
-    if(valor1 = 0) then
-    begin
-      oper:='x';
-      valor1:=StrToFloat(edtResult.Text);
-      TemVirgula:= False;
-      lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-      edtResult.Text:='0';
-      temNegativo:= False;
-    end
-    else
-    begin
-      if  podeReiniciar then
-      begin
-        oper:='x';
-        valor1:=StrToFloat(edtResult.Text);
-        TemVirgula:= False;
-        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-        edtResult.Text:='0';
-      end
-      else
-      begin
-        valor2:=StrToFloat(edtResult.Text);
-        RealizarOperacao(nil);
-        histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-        mmoResultado.Lines.Insert(0,histOperacoes);
-        oper:='x';
-        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-        edtResult.Text:='0';
-        TemVirgula:=False;
-        valorResultado:=0;
-      end;
-    end;
-  end;
+  OperacaoSelecionada('*');
 end;
 
 procedure TForm1.pnlDivClick(Sender: TObject);
 begin
-
-  if edtResult.Text=FloatToStr(valorResultado) then
-  begin
-    oper:='/';
-    temVirgula:= False;
-    temNegativo:= False;
-    edtResult.Text:='0';
-    valor1:=valorResultado;
-    lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-    jahouveResultado := False;
-    valorResultado:=0;
-  end
-  else
-  begin
-    if(valor1 = 0) then
-    begin
-      oper:='/';
-      valor1:=StrToFloat(edtResult.Text);
-      TemVirgula:= False;
-      lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-      edtResult.Text:='0';
-      temNegativo:= False;
-    end
-    else
-    begin
-      valor2:=StrToFloat(edtResult.Text);
-      if not(valor2=0) then
-      begin
-        if  podeReiniciar then
-        begin
-        oper:='/';
-        valor1:=StrToFloat(edtResult.Text);
-        TemVirgula:= False;
-        lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-        edtResult.Text:='0';
-        end
-        else
-        begin
-
-          valor2:=StrToFloat(edtResult.Text);
-          RealizarOperacao(nil);
-          histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
-          mmoResultado.Lines.Insert(0,histOperacoes);
-          oper:='/';
-          lblResult.Caption:=FloatToStr(valor1) + ' ' + oper;
-          edtResult.Text:='0';
-          TemVirgula:=False;
-          valorResultado:=0;
-        end;
-      end
-      else
-      begin
-        ShowMessage('Não pode dividir por zero');
-      end;
-    end;
-  end;
+  OperacaoSelecionada('/');
 end;
 
 procedure TForm1.pnlResultClick(Sender: TObject);
@@ -851,10 +810,10 @@ procedure TForm1.Histrico1Click(Sender: TObject);
 begin
   if pnlMemo.Tag = 0 then
     while pnlMemo.Width < 340 do
-      pnlMemo.Width := pnlMemo.Width + 2
+      pnlMemo.Width := pnlMemo.Width + 5
   else
     while pnlMemo.Width>0 do
-      pnlMemo.Width := pnlMemo.Width - 2;
+      pnlMemo.Width := pnlMemo.Width - 5;
   pnlMemo.Tag := 1 - pnlMemo.Tag;
 end;
 
