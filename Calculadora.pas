@@ -83,6 +83,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure AdicionarMemo(Sender: TObject);
     function OperacaoSelecionada (SinalRecebido: String): String;
+    function jaHaNumero(Sender: TObject):Boolean;
   private
     { Private declarations }
     temVirgula, temNegativo, jahouveResultado, podeReiniciar: Boolean;
@@ -102,6 +103,12 @@ uses Unit2;
 {$R *.dfm}
 
 
+function Tform1.jaHaNumero(Sender: TObject):Boolean;
+begin
+  Result:= False;
+  if oper <> '' then
+    Result:=True;
+end;
 
 function TForm1.CheckNumeroColocado(NumeroDigitado:String):String;
 begin
@@ -115,7 +122,15 @@ begin
     if edtResult.Text='0' then
       edtResult.Text:=NumeroDigitado
     else
-      edtResult.Text:=edtResult.Text+NumeroDigitado;
+    begin
+      if jaHaNumero(nil) then
+      begin
+        ResetarNumeros(nil);
+        edtResult.Text:=NumeroDigitado;
+      end
+      else
+        edtResult.Text:=edtResult.Text+NumeroDigitado;
+    end;
   end;
 end;
 
@@ -130,6 +145,8 @@ begin
       edtResult.Text:='0';
       lblResult.Caption:='';
       jaHouveResultado:= False;
+      temVirgula:= False;
+      temNegativo:= False;
 
     end;
 end;
@@ -157,170 +174,57 @@ end;
 function TForm1.OperacaoSelecionada (SinalRecebido: String): String;
 begin
   case AnsiIndexStr((SinalRecebido),['+','-','*','/']) of
-    0:
-      begin
-        if (jahouveResultado) then
-        begin
-          oper:='+';
-          valor1:=FloatToStr(valorResultado);
-          lblResult.Caption:= valor1 + ' +';
-          jahouveResultado:= False;
-          valor2:='';
-          valorResultado:= 0;
-        end
-        else
-        begin
-          if valor1= '' then
-          begin
-            oper:='+';
-            valor1:= edtResult.Text;
-            lblResult.Caption:=valor1 + ' +';
-          end
-          else
-          begin
-            if valor2= '' then
-            begin
-              oper:='+';
-              lblResult.Caption:=valor1+' +';
-            end
-            else
-            begin
-              RealizarOperacao(nil);
-              AdicionarMemo(nil);
-              valor1:=FloatToStr(valorResultado);
-              oper:='+';
-              lblResult.Caption:=valor1+' +';
-              valorResultado:=0;
-            end;
-          end;
-        end;
-      end;
+    0: oper := '+';
+    1: oper := '-';
+    2: oper := '*';
+    3: oper := '/';
+  else
+    Exit;
+  end;
 
-    1:
+  if (jahouveResultado) then
+  begin
+    valor1            := FloatToStr(valorResultado);
+    lblResult.Caption := valor1 + ' '+oper;
+    jahouveResultado  := False;
+    valor2            := '';
+    valorResultado    := 0;
+  end
+  else
+  begin
+    if valor1 = '' then
+    begin
+      valor1 := edtResult.Text;
+      lblResult.Caption := valor1 + ' '+oper;
+    end
+    else
+    begin
+      if valor2= '' then
       begin
-        if (jahouveResultado) then
+        valor2:=edtResult.Text;
+        if oper='/' then
         begin
-          oper:='-';
-          valor1:=FloatToStr(valorResultado);
-          lblResult.Caption:= valor1 + ' -';
-          jahouveResultado:= False;
-          valor2:= '';
-          valorResultado:= 0;
-        end
-        else
-        begin
-          if valor1 = '' then
-          begin
-            oper:='-';
-            valor1:=edtResult.Text;
-            lblResult.Caption:=valor1 + ' -';
-          end
-          else
-          begin
-            if valor2= '' then
-            begin
-              oper:='-';
-              lblResult.Caption:=valor1+' -';
-            end
-            else
-            begin
-              RealizarOperacao(nil);
-              AdicionarMemo(nil);
-              valor1:=FloatToStr(valorResultado);
-              oper:='-';
-              lblResult.Caption:=valor1+' -';
-              valorResultado:=0;
-            end;
-          end;
-        end;
-      end;
-    2:
-      begin
-        if (jahouveResultado) then
-        begin
-          oper:='*';
-          valor1:=FloatToStr(valorResultado);
-          lblResult.Caption:= valor1 + ' *';
-          jahouveResultado:= False;
+          ShowMessage('Não pode dividir por zero');
           valor2:='';
-          valorResultado:= 0;
         end
         else
         begin
-          if valor1 = '' then
-          begin
-            oper:='*';
-            valor1:=edtResult.Text;
-            lblResult.Caption:=valor1 + ' *';
-          end
-          else
-          begin
-            if valor2= '' then
-            begin
-              oper:='*';
-              lblResult.Caption:=valor1+' *';
-            end
-            else
-            begin
-              RealizarOperacao(nil);
-              AdicionarMemo(nil);
-              valor1:=FloatToStr(valorResultado);
-              oper:='*';
-              lblResult.Caption:=valor1+' *';
-              valorResultado:=0;
-            end;
-          end;
+          RealizarOperacao(nil);
+          AdicionarMemo(nil);
+          valor1 := FloatToStr(valorResultado);
+          edtResult.Text := valor1;
+          lblResult.Caption := valor1+' '+oper;
+          valorResultado := 0;
+          valor2 := '';
         end;
       end;
-    3:
-      begin
-        if (jahouveResultado) then
-        begin
-          oper:='/';
-          valor1:=FloatToStr(valorResultado);
-          lblResult.Caption:= valor1 + ' /';
-          jahouveResultado:= False;
-          valor2:= '';
-          valorResultado:= 0;
-        end
-        else
-        begin
-          if valor1 = '' then
-          begin
-            oper:='/';
-            valor1:=edtResult.Text;
-            lblResult.Caption:=valor1 + ' /';
-          end
-          else
-          begin
-            if valor2= '' then
-            begin
-              oper:='/';
-              lblResult.Caption:=valor1 + ' /';
-            end
-            else
-            begin
-              if valor2= '0' then
-                ShowMessage('Não pode dividir por zero')
-              else
-              begin
-                RealizarOperacao(nil);
-                AdicionarMemo(nil);
-                valor1:=FloatToStr(valorResultado);
-                oper:='/';
-                lblResult.Caption:=valor1+' /';
-                valorResultado:=0;
-              end;
-            end;
-          end;
-        end;
-      end;
-
+    end;
   end;
 end;
 
 procedure TForm1.pnl7Click(Sender: TObject);
 begin
+
   CheckNumeroColocado('7');
 end;
 
@@ -455,14 +359,15 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
- temVirgula := False;
- jahouveResultado := False;
- temNegativo := False;
- valor1:= '';
- valor2:= '';
- oper:='';
- valorResultado:= 0.000001;
- podeReiniciar:= False;
+  Form1.AutoSize:= True;
+  temVirgula := False;
+  jahouveResultado := False;
+  temNegativo := False;
+  valor1:= '';
+  valor2:= '';
+  oper:='';
+  valorResultado:= 0;
+  podeReiniciar:= False;
 end;
 
 procedure TForm1.pnlNegativoClick(Sender: TObject);
@@ -540,6 +445,7 @@ begin
         valorResultado:=StrToFloat(valor1) + StrToFloat(valor2);
         edtResult.Text:=FloatToStr(valorResultado);
         lblResult.Caption:= valor1+' '+oper+' '+valor2+' = '+FloatToStr(valorResultado);
+        AdicionarMemo(nil);
         valor1:='';
       end;
     1:
@@ -547,6 +453,7 @@ begin
         valorResultado:=StrToFloat(valor1) - StrToFloat(valor2);
         edtResult.Text:=FloatToStr(valorResultado);
         lblResult.Caption:= valor1+' '+oper+' '+valor2+' = '+FloatToStr(valorResultado);
+        AdicionarMemo(nil);
         valor1:='';
       end;
     2:
@@ -554,6 +461,7 @@ begin
         valorResultado:=StrToFloat(valor1) * StrToFloat(valor2);
         edtResult.Text:=FloatToStr(valorResultado);
         lblResult.Caption:= valor1+' '+oper+' '+valor2+' = '+FloatToStr(valorResultado);
+        AdicionarMemo(nil);
         valor1:='';
       end;
     3:
@@ -565,12 +473,13 @@ begin
           valorResultado:=StrToFloat(valor1) / StrToFloat(valor2);
           edtResult.Text:=FloatToStr(valorResultado);
           lblResult.Caption:= valor1+' '+oper+' '+valor2+' = '+FloatToStr(valorResultado);
+          AdicionarMemo(nil);
           valor1:='';
         end;
       end;
 
     end;
-    AdicionarMemo(nil);
+
   end;
 end;
 
