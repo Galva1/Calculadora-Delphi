@@ -164,22 +164,26 @@ begin
         end
         else
         begin
-          if valor1 = 0 then
+          if valor1= 0 then
           begin
             oper:='+';
-            valor1:=StrToFloat(edtResult.Text);
+            valor1:= StrToFloat(edtResult.Text);
             lblResult.Caption:=FloatToStr(valor1) + ' +';
           end
           else
           begin
             if valor2= 0 then
+            begin
+              oper:='+';
+              lblResult.Caption:=FloatToStr(valor1)+' +';
+            end
             else
             begin
               RealizarOperacao(nil);
               AdicionarMemo(nil);
               valor1:=valorResultado;
               oper:='+';
-              lblResult.Caption:=FloatToStr(valor1)+' -';
+              lblResult.Caption:=FloatToStr(valor1)+' +';
               valorResultado:=0;
             end;
           end;
@@ -208,6 +212,10 @@ begin
           else
           begin
             if valor2= 0 then
+            begin
+              oper:='-';
+              lblResult.Caption:=FloatToStr(valor1)+' -';
+            end
             else
             begin
               RealizarOperacao(nil);
@@ -242,6 +250,10 @@ begin
           else
           begin
             if valor2= 0 then
+            begin
+              oper:='*';
+              lblResult.Caption:=FloatToStr(valor1)+' *';
+            end
             else
             begin
               RealizarOperacao(nil);
@@ -258,9 +270,9 @@ begin
       begin
         if (jahouveResultado) then
         begin
-          oper:='+';
+          oper:='/';
           valor1:=valorResultado;
-          lblResult.Caption:= FloatToStr(valor1) + ' +';
+          lblResult.Caption:= FloatToStr(valor1) + ' /';
           jahouveResultado:= False;
           valor2:= 0;
           valorResultado:= 0;
@@ -277,6 +289,8 @@ begin
           begin
             if valor2= 0 then
             begin
+              oper:='/';
+              lblResult.Caption:=FloatToStr(valor1)+' /';
               ShowMessage('Não pode dividir por zero');
             end
             else
@@ -365,15 +379,12 @@ var
 i: integer;
 verificarVirgula, verificarNegativo: Integer;
 begin
-  if (edtResult.Text='0') or (edtResult.Text=FloatToStr(valorResultado)) then
+  if jahouveResultado then
     begin
-      edtResult.Text:=FloatToStr(valor1);
+      valor1:=0;
       valor2:=0;
       valorResultado:=0;
-      lblResult.Caption:=FloatToStr(valor1)+' '+oper;
-      edtResult.Text:='0';
-      temVirgula:=False;
-      temNegativo:=False;
+      lblResult.Caption:='';
       jahouveResultado:=False;
     end
   else
@@ -509,6 +520,8 @@ begin
   end
   else
   begin
+    jahouveResultado:= True;
+    valor2:=StrToFloat(edtResult.Text);
     case AnsiIndexStr((oper),['+','-','*','/']) of
     0:
       begin
@@ -563,11 +576,11 @@ end;
 procedure TForm1.edtResultChange(Sender: TObject);
 var
   vPosicao: Integer;
+  valorSalvo: extended;
 begin
+  edtResult.SelStart:= Length(edtResult.text);
   if (edtResult.Text = '') then
       edtResult.Text:='0';
-
-  edtResult.SelStart:= Length(edtResult.text);
 
 end;
 

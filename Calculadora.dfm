@@ -1,9 +1,8 @@
 object Form1: TForm1
-  Left = 545
-  Top = 123
-  Width = 377
-  Height = 620
-  AutoSize = True
+  Left = 534
+  Top = 86
+  Width = 641
+  Height = 674
   Caption = 'Calculadora'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
