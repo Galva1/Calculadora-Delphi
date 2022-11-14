@@ -86,8 +86,8 @@ type
   private
     { Private declarations }
     temVirgula, temNegativo, jahouveResultado, podeReiniciar: Boolean;
-    valor1, valor2, valorResultado: Extended;
-    oper, histOperacoes: string;
+    valorResultado: Extended;
+    oper, histOperacoes, valor1, valor2: string;
   public
     { Public declarations }
   end;
@@ -121,16 +121,22 @@ end;
 
 procedure TForm1.ResetarNumeros(Sender: TObject);
 begin
-    valor1:=0;
-    valor2:=0;
-    valorResultado:=0;
-    lblResult.Caption:='';
-    jaHouveResultado:= False;
+    if jahouveResultado then
+    begin
+      valor1:='';
+      valor2:='';
+      oper:='';
+      valorResultado:=0;
+      edtResult.Text:='0';
+      lblResult.Caption:='';
+      jaHouveResultado:= False;
+
+    end;
 end;
 
 procedure TForm1.AdicionarMemo(Sender: TObject);
 begin
-  histOperacoes:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+  histOperacoes:= valor1+' '+oper+' '+valor2+' = '+FloatToStr(valorResultado);
   if mmoResultado.Lines[0] = histOperacoes then
   else
     mmoResultado.Lines.Insert(0,histOperacoes);
@@ -139,13 +145,13 @@ end;
 procedure TForm1.RealizarOperacao(Sender: TOBject);
 begin
   if oper = '+' then
-    valorResultado:= valor1 + valor2;
+    valorResultado:= StrToFloat(valor1) + StrToFloat(valor2);
   if oper = '-' then
-    valorResultado:= valor1 - valor2;
+    valorResultado:= StrToFloat(valor1) - StrToFloat(valor2);
   if oper = 'x' then
-    valorResultado:= valor1 * valor2;
+    valorResultado:= StrToFloat(valor1) * StrToFloat(valor2);
   if oper = '/' then
-    valorResultado:= valor1 / valor2;
+    valorResultado:= StrToFloat(valor1) / StrToFloat(valor2);
 end;
 
 function TForm1.OperacaoSelecionada (SinalRecebido: String): String;
@@ -156,34 +162,34 @@ begin
         if (jahouveResultado) then
         begin
           oper:='+';
-          valor1:=valorResultado;
-          lblResult.Caption:= FloatToStr(valor1) + ' +';
+          valor1:=FloatToStr(valorResultado);
+          lblResult.Caption:= valor1 + ' +';
           jahouveResultado:= False;
-          valor2:= 0;
+          valor2:='';
           valorResultado:= 0;
         end
         else
         begin
-          if valor1= 0 then
+          if valor1= '' then
           begin
             oper:='+';
-            valor1:= StrToFloat(edtResult.Text);
-            lblResult.Caption:=FloatToStr(valor1) + ' +';
+            valor1:= edtResult.Text;
+            lblResult.Caption:=valor1 + ' +';
           end
           else
           begin
-            if valor2= 0 then
+            if valor2= '' then
             begin
               oper:='+';
-              lblResult.Caption:=FloatToStr(valor1)+' +';
+              lblResult.Caption:=valor1+' +';
             end
             else
             begin
               RealizarOperacao(nil);
               AdicionarMemo(nil);
-              valor1:=valorResultado;
+              valor1:=FloatToStr(valorResultado);
               oper:='+';
-              lblResult.Caption:=FloatToStr(valor1)+' +';
+              lblResult.Caption:=valor1+' +';
               valorResultado:=0;
             end;
           end;
@@ -195,34 +201,34 @@ begin
         if (jahouveResultado) then
         begin
           oper:='-';
-          valor1:=valorResultado;
-          lblResult.Caption:= FloatToStr(valor1) + ' -';
+          valor1:=FloatToStr(valorResultado);
+          lblResult.Caption:= valor1 + ' -';
           jahouveResultado:= False;
-          valor2:= 0;
+          valor2:= '';
           valorResultado:= 0;
         end
         else
         begin
-          if valor1 = 0 then
+          if valor1 = '' then
           begin
             oper:='-';
-            valor1:=StrToFloat(edtResult.Text);
-            lblResult.Caption:=FloatToStr(valor1) + ' -';
+            valor1:=edtResult.Text;
+            lblResult.Caption:=valor1 + ' -';
           end
           else
           begin
-            if valor2= 0 then
+            if valor2= '' then
             begin
               oper:='-';
-              lblResult.Caption:=FloatToStr(valor1)+' -';
+              lblResult.Caption:=valor1+' -';
             end
             else
             begin
               RealizarOperacao(nil);
               AdicionarMemo(nil);
-              valor1:=valorResultado;
+              valor1:=FloatToStr(valorResultado);
               oper:='-';
-              lblResult.Caption:=FloatToStr(valor1)+' -';
+              lblResult.Caption:=valor1+' -';
               valorResultado:=0;
             end;
           end;
@@ -233,34 +239,34 @@ begin
         if (jahouveResultado) then
         begin
           oper:='*';
-          valor1:=valorResultado;
-          lblResult.Caption:= FloatToStr(valor1) + ' *';
+          valor1:=FloatToStr(valorResultado);
+          lblResult.Caption:= valor1 + ' *';
           jahouveResultado:= False;
-          valor2:= 0;
+          valor2:='';
           valorResultado:= 0;
         end
         else
         begin
-          if valor1 = 0 then
+          if valor1 = '' then
           begin
             oper:='*';
-            valor1:=StrToFloat(edtResult.Text);
-            lblResult.Caption:=FloatToStr(valor1) + ' *';
+            valor1:=edtResult.Text;
+            lblResult.Caption:=valor1 + ' *';
           end
           else
           begin
-            if valor2= 0 then
+            if valor2= '' then
             begin
               oper:='*';
-              lblResult.Caption:=FloatToStr(valor1)+' *';
+              lblResult.Caption:=valor1+' *';
             end
             else
             begin
               RealizarOperacao(nil);
               AdicionarMemo(nil);
-              valor1:=valorResultado;
+              valor1:=FloatToStr(valorResultado);
               oper:='*';
-              lblResult.Caption:=FloatToStr(valor1)+' *';
+              lblResult.Caption:=valor1+' *';
               valorResultado:=0;
             end;
           end;
@@ -271,36 +277,40 @@ begin
         if (jahouveResultado) then
         begin
           oper:='/';
-          valor1:=valorResultado;
-          lblResult.Caption:= FloatToStr(valor1) + ' /';
+          valor1:=FloatToStr(valorResultado);
+          lblResult.Caption:= valor1 + ' /';
           jahouveResultado:= False;
-          valor2:= 0;
+          valor2:= '';
           valorResultado:= 0;
         end
         else
         begin
-          if valor1 = 0 then
+          if valor1 = '' then
           begin
             oper:='/';
-            valor1:=StrToFloat(edtResult.Text);
-            lblResult.Caption:=FloatToStr(valor1) + ' /';
+            valor1:=edtResult.Text;
+            lblResult.Caption:=valor1 + ' /';
           end
           else
           begin
-            if valor2= 0 then
+            if valor2= '' then
             begin
               oper:='/';
-              lblResult.Caption:=FloatToStr(valor1)+' /';
-              ShowMessage('Não pode dividir por zero');
+              lblResult.Caption:=valor1 + ' /';
             end
             else
             begin
-              RealizarOperacao(nil);
-              AdicionarMemo(nil);
-              valor1:=valorResultado;
-              oper:='/';
-              lblResult.Caption:=FloatToStr(valor1)+' /';
-              valorResultado:=0;
+              if valor2= '0' then
+                ShowMessage('Não pode dividir por zero')
+              else
+              begin
+                RealizarOperacao(nil);
+                AdicionarMemo(nil);
+                valor1:=FloatToStr(valorResultado);
+                oper:='/';
+                lblResult.Caption:=valor1+' /';
+                valorResultado:=0;
+              end;
             end;
           end;
         end;
@@ -381,11 +391,10 @@ verificarVirgula, verificarNegativo: Integer;
 begin
   if jahouveResultado then
     begin
-      valor1:=0;
-      valor2:=0;
       valorResultado:=0;
-      lblResult.Caption:='';
       jahouveResultado:=False;
+      lblResult.Caption:='';
+
     end
   else
   begin
@@ -449,8 +458,8 @@ begin
  temVirgula := False;
  jahouveResultado := False;
  temNegativo := False;
- valor1:= 0;
- valor2:= 0;
+ valor1:= '';
+ valor2:= '';
  oper:='';
  valorResultado:= 0.000001;
  podeReiniciar:= False;
@@ -515,41 +524,48 @@ ArmazenamentoValor:Extended;
 begin
   if oper='' then
   begin
-    valor1:=StrToFloat(edtResult.Text);
-    lblResult.Caption:= FloatToStr(valor1)+' =';
+    valor1:=edtResult.Text;
+    lblResult.Caption:= valor1+' =';
   end
   else
   begin
+    if valor1 = '' then
+      valor1:= edtResult.Text
+    else
+      valor2:=edtResult.Text;
     jahouveResultado:= True;
-    valor2:=StrToFloat(edtResult.Text);
     case AnsiIndexStr((oper),['+','-','*','/']) of
     0:
       begin
-        valorResultado:=valor1+valor2;
+        valorResultado:=StrToFloat(valor1) + StrToFloat(valor2);
         edtResult.Text:=FloatToStr(valorResultado);
-        lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+        lblResult.Caption:= valor1+' '+oper+' '+valor2+' = '+FloatToStr(valorResultado);
+        valor1:='';
       end;
     1:
       begin
-        valorResultado:=valor1-valor2;
+        valorResultado:=StrToFloat(valor1) - StrToFloat(valor2);
         edtResult.Text:=FloatToStr(valorResultado);
-        lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+        lblResult.Caption:= valor1+' '+oper+' '+valor2+' = '+FloatToStr(valorResultado);
+        valor1:='';
       end;
     2:
       begin
-        valorResultado:=valor1*valor2;
+        valorResultado:=StrToFloat(valor1) * StrToFloat(valor2);
         edtResult.Text:=FloatToStr(valorResultado);
-        lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+        lblResult.Caption:= valor1+' '+oper+' '+valor2+' = '+FloatToStr(valorResultado);
+        valor1:='';
       end;
     3:
       begin
-        if valor2 = 0 then
+        if valor2 = '0' then
           ShowMessage('Não pode dividir por zero')
         else
         begin
-          valorResultado:=valor1/valor2;
+          valorResultado:=StrToFloat(valor1) / StrToFloat(valor2);
           edtResult.Text:=FloatToStr(valorResultado);
-          lblResult.Caption:= FloatToStr(valor1)+' '+oper+' '+FloatToStr(valor2)+' = '+FloatToStr(valorResultado);
+          lblResult.Caption:= valor1+' '+oper+' '+valor2+' = '+FloatToStr(valorResultado);
+          valor1:='';
         end;
       end;
 
@@ -560,8 +576,8 @@ end;
 
 procedure TForm1.pnlACClick(Sender: TObject);
 begin
-  valor1:= 0;
-  valor2:= 0;
+  valor1:= '';
+  valor2:= '';
   temVirgula := False;
   temNegativo := False;
   edtResult.Text:='0';
