@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 243
-  Top = 71
+  Left = 179
+  Top = 39
   Width = 1280
   Height = 674
   Caption = 'Calculadora'
@@ -17,18 +17,24 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object pnlMemo: TPanel
-    Left = 894
+    Left = 462
     Top = 0
-    Width = 100
-    Height = 561
-    Color = cl3DDkShadow
+    Width = 340
+    Height = 553
+    Color = 16350109
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 5452337
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 1
     object mmoResultado: TMemo
       Left = 1
-      Top = 1
-      Width = 98
-      Height = 505
-      Align = alTop
+      Top = 16
+      Width = 336
+      Height = 498
+      Color = 16627148
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -39,11 +45,19 @@ object Form1: TForm1
       TabOrder = 0
     end
     object pnl11: TPanel
-      Left = 272
-      Top = 512
-      Width = 57
-      Height = 41
+      Left = 264
+      Top = 520
+      Width = 73
+      Height = 25
+      BevelOuter = bvLowered
       Caption = 'Limpar'
+      Color = 16627148
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 1
       OnClick = pnl11Click
     end
@@ -51,373 +65,416 @@ object Form1: TForm1
   object pnlFundoTotal: TPanel
     Left = 0
     Top = 0
-    Width = 569
-    Height = 561
-    Color = cl3DDkShadow
+    Width = 465
+    Height = 553
+    Color = 16350109
     TabOrder = 0
-    object pnlFundoResultado: TPanel
-      Left = 8
-      Top = 64
-      Width = 345
-      Height = 73
-      TabOrder = 0
-      object edtDisplay: TEdit
-        Left = 8
-        Top = 8
-        Width = 329
-        Height = 54
-        BiDiMode = bdRightToLeft
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -40
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentBiDiMode = False
-        ParentFont = False
-        TabOrder = 0
-        Text = '0'
-        OnChange = edtDisplayChange
-        OnKeyPress = edtDisplayKeyPress
-        OnMouseDown = edtDisplayMouseDown
-      end
-    end
     object pnlFundolblFormula: TPanel
-      Left = 104
-      Top = 13
-      Width = 249
-      Height = 44
+      Left = 112
+      Top = 21
+      Width = 0
+      Height = 52
       Color = cl3DDkShadow
       TabOrder = 1
       object pnl10: TPanel
         Left = 8
         Top = 8
-        Width = 233
+        Width = 321
         Height = 25
         TabOrder = 0
-        object lblFormula: TLabel
-          Left = 228
-          Top = 1
-          Width = 4
-          Height = 23
-          Align = alRight
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-        end
       end
     end
     object pnlFundoDigitos: TPanel
-      Left = 8
-      Top = 144
-      Width = 545
-      Height = 401
-      Color = cl3DDkShadow
+      Left = 0
+      Top = 128
+      Width = 481
+      Height = 433
+      Color = 16350109
       TabOrder = 2
-      object pnl0: TPanel
-        Left = 208
-        Top = 320
-        Width = 113
-        Height = 81
-        Caption = '0'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-        OnClick = pnl0Click
-      end
-      object pnlVirg: TPanel
-        Left = 96
-        Top = 320
-        Width = 113
-        Height = 81
-        Caption = ','
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 1
-        OnClick = pnlVirgClick
-      end
-      object pnlResult: TPanel
-        Left = 432
-        Top = 320
-        Width = 113
-        Height = 81
-        Caption = '='
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 2
-        OnClick = pnlResultClick
-      end
-      object pnl3: TPanel
-        Left = 176
-        Top = 256
-        Width = 73
-        Height = 65
-        Caption = '3'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 3
-        OnClick = pnl3Click
-      end
-      object pnl2: TPanel
-        Left = 96
-        Top = 256
-        Width = 73
-        Height = 65
-        Caption = '2'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 4
-        OnClick = pnl2Click
-      end
-      object pnl1: TPanel
-        Left = 16
-        Top = 256
-        Width = 73
-        Height = 65
-        Caption = '1'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 5
-        OnClick = pnl1Click
-      end
-      object pnl4: TPanel
-        Left = 16
-        Top = 176
-        Width = 73
-        Height = 65
-        Caption = '4'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 6
-        OnClick = pnl4Click
-      end
-      object pnl5: TPanel
-        Left = 96
-        Top = 176
-        Width = 73
-        Height = 65
-        Caption = '5'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 7
-        OnClick = pnl5Click
-      end
-      object pnl6: TPanel
-        Left = 176
-        Top = 176
-        Width = 73
-        Height = 65
-        Caption = '6'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 8
-        OnClick = pnl6Click
-      end
-      object pnl7: TPanel
-        Left = 16
-        Top = 96
-        Width = 73
-        Height = 65
-        Caption = '7'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 9
-        OnClick = pnl7Click
-      end
-      object pnl8: TPanel
-        Left = 96
-        Top = 96
-        Width = 73
-        Height = 65
-        Caption = '8'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 10
-        OnClick = pnl8Click
-      end
-      object pnl9: TPanel
-        Left = 176
-        Top = 96
-        Width = 73
-        Height = 65
-        Caption = '9'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 11
-        OnClick = pnl9Click
-      end
-      object pnlMenos: TPanel
-        Left = 432
-        Top = 160
-        Width = 113
-        Height = 81
-        Caption = '-'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -33
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 12
-        OnClick = pnlMenosClick
-      end
-      object pnlMult: TPanel
-        Left = 432
-        Top = 80
-        Width = 113
-        Height = 81
-        Caption = 'x'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 13
-        OnClick = pnlMultClick
-      end
-      object pnlDiv: TPanel
-        Left = 432
-        Top = 0
-        Width = 113
-        Height = 81
-        Caption = #247
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 14
-        OnClick = pnlDivClick
-      end
-      object pnlMais: TPanel
-        Left = 432
-        Top = 240
-        Width = 113
-        Height = 81
-        Caption = '+'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 15
-        OnClick = pnlMaisClick
-      end
       object pnlC: TPanel
-        Left = 96
-        Top = 0
+        Left = 8
+        Top = 8
         Width = 113
         Height = 81
+        BevelOuter = bvLowered
         Caption = 'CE'
-        Color = clMaroon
+        Color = 16350109
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindow
         Font.Height = -27
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
         TabOrder = 16
         OnClick = pnlCClick
       end
       object pnlAC: TPanel
-        Left = 208
-        Top = 0
+        Left = 120
+        Top = 8
         Width = 113
         Height = 81
+        BevelOuter = bvLowered
         Caption = 'C'
-        Color = clMaroon
+        Color = 16350109
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindow
+        Font.Color = 16711808
         Font.Height = -27
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
         TabOrder = 17
         OnClick = pnlACClick
       end
-      object pnlNegativo: TPanel
-        Left = 320
-        Top = 320
-        Width = 113
-        Height = 81
-        Caption = '+/-'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 18
-        OnClick = pnlNegativoClick
-      end
       object pnlDelete: TPanel
-        Left = 320
-        Top = 0
+        Left = 232
+        Top = 8
         Width = 113
         Height = 81
+        BevelOuter = bvLowered
         Caption = '<='
+        Color = 16350109
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
+        Font.Color = clWhite
         Font.Height = -27
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
         TabOrder = 19
         OnClick = pnlDeleteClick
       end
+      object pnlDiv: TPanel
+        Left = 344
+        Top = 8
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = #247
+        Color = 16350109
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 14
+        OnClick = pnlDivClick
+      end
+      object pnlMult: TPanel
+        Left = 344
+        Top = 88
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = 'x'
+        Color = 16350109
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 13
+        OnClick = pnlMultClick
+      end
+      object pnlMenos: TPanel
+        Left = 344
+        Top = 168
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '-'
+        Color = 16350109
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -33
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 12
+        OnClick = pnlMenosClick
+      end
+      object pnlMais: TPanel
+        Left = 344
+        Top = 248
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '+'
+        Color = 16350109
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 15
+        OnClick = pnlMaisClick
+      end
+      object pnlResult: TPanel
+        Left = 344
+        Top = 328
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '='
+        Color = 16350109
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+        OnClick = pnlResultClick
+      end
+      object pnlNegativo: TPanel
+        Left = 232
+        Top = 328
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '+/-'
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 18
+        OnClick = pnlNegativoClick
+      end
+      object pnl3: TPanel
+        Left = 232
+        Top = 248
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '3'
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 3
+        OnClick = pnl3Click
+      end
+      object pnl6: TPanel
+        Left = 232
+        Top = 168
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '6'
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 8
+        OnClick = pnl6Click
+      end
+      object pnl9: TPanel
+        Left = 232
+        Top = 88
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '9'
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 11
+        OnClick = pnl9Click
+      end
+      object pnl0: TPanel
+        Left = 120
+        Top = 328
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '0'
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnClick = pnl0Click
+      end
+      object pnl2: TPanel
+        Left = 120
+        Top = 248
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '2'
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
+        OnClick = pnl2Click
+      end
+      object pnl5: TPanel
+        Left = 120
+        Top = 168
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '5'
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 7
+        OnClick = pnl5Click
+      end
+      object pnl8: TPanel
+        Left = 120
+        Top = 88
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '8'
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 10
+        OnClick = pnl8Click
+      end
+      object pnlVirg: TPanel
+        Left = 8
+        Top = 328
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = ','
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+        OnClick = pnlVirgClick
+      end
+      object pnl1: TPanel
+        Left = 8
+        Top = 248
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '1'
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 5
+        OnClick = pnl1Click
+      end
+      object pnl4: TPanel
+        Left = 8
+        Top = 168
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '4'
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 6
+        OnClick = pnl4Click
+      end
+      object pnl7: TPanel
+        Left = 8
+        Top = 88
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = '7'
+        Color = 16627148
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 9
+        OnClick = pnl7Click
+      end
+    end
+    object pnlFundoResultado: TPanel
+      Left = 0
+      Top = 16
+      Width = 489
+      Height = 113
+      Color = 16627148
+      TabOrder = 0
+      object lblFormula: TLabel
+        Left = 128
+        Top = 8
+        Width = 320
+        Height = 25
+        Align = alCustom
+        Alignment = taRightJustify
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -17
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+      end
+    end
+    object edtDisplay: TEdit
+      Left = 8
+      Top = 48
+      Width = 449
+      Height = 68
+      BiDiMode = bdRightToLeft
+      BorderStyle = bsNone
+      Color = 16627148
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -53
+      Font.Name = 'Microsoft JhengHei'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentFont = False
+      TabOrder = 3
+      Text = '0'
+      OnChange = edtDisplayChange
+      OnKeyPress = edtDisplayKeyPress
+      OnMouseDown = edtDisplayMouseDown
     end
   end
   object mm1: TMainMenu

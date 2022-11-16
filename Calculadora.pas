@@ -420,49 +420,6 @@ begin
           end;
       end;
   end;
-  {else
-  begin
-      edtDisplay.Text:= copy(edtDisplay.Text,1,length(edtDisplay.Text)-1);
-      if not(temVirgula) and (TemNegativo) then
-      begin
-        verificarNegativo := (length(edtDisplay.Text));
-        if verificarNegativo = 1 then
-          begin
-            edtDisplay.Text := '0';
-            temNegativo := False;
-          end;
-      end;
-      if (temVirgula) and not(temNegativo) then
-      begin
-        VerificarVirgula := 0;
-        try
-          for i := 1 to length(edtDisplay.Text) do
-            begin
-              verificarVirgula := StrToInt(edtDisplay.Text[i]);
-            end;
-            temVirgula := False;
-
-        except
-          temVirgula := True;
-        end;
-      end;
-      if (temVirgula) and (temNegativo) then
-      begin
-        verificarVirgula := 0;
-        VerificarNegativo := 0;
-        try
-          for i := 2 to length(edtDisplay.Text) do
-          begin
-            verificarVirgula := StrToInt(edtDisplay.Text[i]);
-          end;
-          temVirgula := False;
-        except
-          temVirgula := True;
-        end;
-      end;
-  end;
-  if(edtDisplay.Text = '') then
-    edtDisplay.Text := '0';}
 end;
 
 procedure TForm1.pnlCClick(Sender: TObject);
@@ -766,17 +723,24 @@ end;
 procedure TForm1.Estilos1Click(Sender: TObject);
 begin
   MudarCor('Dark');
-  Form1.pnlAc.Color := clMaroon;
-  Form1.pnlC.Color := clMaroon;
-  Form1.pnlFundoResultado.Color := clBtnFace;
-  Form1.pnl11.Color:= clBtnFace;
-  Form1.pnl10.Color:= clBtnFace;
-  Form1.pnlMemo.Color := cl3DDkShadow;
-  Form1.pnlFundoDigitos.Color := cl3DDkShadow;
-  Form1.pnlFundoTotal.Color:= cl3DDkShadow;
-  Form1.pnlFundolblFormula.Color := cl3DDkShadow;
-  Form1.mmoResultado.Color:= clWindow;
-  Form1.edtDisplay.Color:=clBtnFace;
+  Form1.pnlAc.Color := $00503D3A;
+  Form1.pnlC.Color := $00503D3A;
+  Form1.lblFormula.Font.Color:= clWhite;
+  Form1.pnlAc.Font.Color := clMaroon;
+  Form1.pnlDelete.Color := $00503D3A;
+  Form1.pnlDiv.Color := $00503D3A;
+  Form1.pnlMult.Color := $00503D3A;
+  Form1.pnlMenos.Color := $00503D3A;
+  Form1.pnlMais.Color := $00503D3A;
+  Form1.pnlResult.Color := $00503D3A;
+  Form1.edtDisplay.Color := $00A9857A;
+  Form1.edtDisplay.Font.Color := clWhite;
+  Form1.pnlFundoResultado.Color := $00A9857A;
+  Form1.pnlFundoDigitos.Color := $00503D3A;
+  Form1.pnlFundoTotal.Color:= $00503D3A;
+  Form1.pnlMemo.Color := $00503D3A;
+  Form1.mmoResultado.Color := $00A9857A;
+  Form1.pnl11.Color := $00A9857A;
 
 end;
 
@@ -784,37 +748,47 @@ end;
 procedure TForm1.D1Click(Sender: TObject);
 begin
   MudarCor('Yellow');
-  Form1.pnlAc.Color := clMaroon;
-  Form1.pnlC.Color := clMaroon;
-  Form1.pnlFundoResultado.Color := $0000B0B0;
-  Form1.pnl11.Color:= $0000B0B0;
-  Form1.pnl10.Color:= $00DAFDFE;
-  Form1.pnlMemo.Color := clYellow;
-  Form1.pnlFundoDigitos.Color := $0000B0B0;
-  Form1.pnlFundoTotal.Color:= clYellow;
-  Form1.pnlFundolblFormula.Color := $0000B0B0;
-  Form1.mmoResultado.Color:= $00DAFDFE;
-  Form1.edtDisplay.Color:=$00DAFDFE;
-
-
+  Form1.pnlAc.Color := $0046BCE3;
+  Form1.pnlAc.Font.Color := $00106183;
+  Form1.lblFormula.Font.Color:= clBlack;
+  Form1.pnlC.Color := $0046BCE3;
+  Form1.pnlDelete.Color := $0046BCE3;
+  Form1.pnlDiv.Color := $0046BCE3;
+  Form1.pnlMult.Color := $0046BCE3;
+  Form1.pnlMenos.Color := $0046BCE3;
+  Form1.pnlMais.Color := $0046BCE3;
+  Form1.edtDisplay.Color := $0083DEFC;
+  Form1.edtDisplay.Font.Color := clBlack;
+  Form1.pnlFundoResultado.Color := $0083DEFC;
+  Form1.pnlFundoDigitos.Color := $0046BCE3;
+  Form1.pnlFundoTotal.Color:= $0046BCE3;
+  Form1.pnlMemo.Color := $0046BCE3;
+  Form1.mmoResultado.Color := $0083DEFC;
+  Form1.pnl11.Color := $0083DEFC;
 
 end;
 
 procedure TForm1.Purple1Click(Sender: TObject);
 begin
   MudarCor('Purple');
-  Form1.pnlAc.Color := clMaroon;
-  Form1.pnlC.Color := clMaroon;
-  Form1.pnlFundoResultado.Color := $00FBBFF0;
-  Form1.pnl11.Color:= $00FBBFF0;
-  Form1.pnl10.Color:= $00FCD1F4;
-  Form1.pnlMemo.Color := clPurple;
-  Form1.pnlFundoDigitos.Color := clPurple;
-  Form1.pnlFundoTotal.Color:= clPurple;
-  Form1.pnlFundolblFormula.Color := $00FBBFF0;
-  Form1.mmoResultado.Color:= $00FCD1F4;
-  Form1.edtDisplay.Color:=$00FCD1F4;
-
+  Form1.pnlAc.Color := $00F97B9D;
+  Form1.pnlAc.Font.Color := $00FF0080;
+  Form1.lblFormula.Font.Color:= clBlack;
+  Form1.pnlC.Color := $00F97B9D;
+  Form1.pnlDelete.Color := $00F97B9D;
+  Form1.pnlDiv.Color := $00F97B9D;
+  Form1.pnlMult.Color := $00F97B9D;
+  Form1.pnlMenos.Color := $00F97B9D;
+  Form1.pnlMais.Color := $00F97B9D;
+  Form1.pnlResult.Color := $00FDB5CC;
+  Form1.edtDisplay.Color := $00FDB5CC;
+  Form1.edtDisplay.Font.Color := clBlack;
+  Form1.pnlFundoResultado.Color := $00FDB5CC;
+  Form1.pnlFundoDigitos.Color := $00F97B9D;
+  Form1.pnlFundoTotal.Color:= $00F97B9D;
+  Form1.pnlMemo.Color := $00F97B9D;
+  Form1.mmoResultado.Color := $00FDB5CC;
+  Form1.pnl11.Color := $00FDB5CC;
 
 end;
 
@@ -848,24 +822,42 @@ begin
         if((TPanel(Components[i]).Caption >= '0') and (TPanel(Components[i]).Caption <= '9')) then
         begin
           if(cor='Dark') then
-            TPanel(Components[i]).Color:= clBtnFace;
+          begin
+               TPanel(Components[i]).Color:= $00A9857A;
+               TPanel(Components[i]).Font.Color := clWhite;
+          end;
           if(cor='Yellow') then
-            TPanel(Components[i]).Color:= $00A0FAFC;
+          begin
+               TPanel(Components[i]).Color:= $00A0FAFC;
+               TPanel(Components[i]).Font.Color := clBlack;
+          end;
           if(cor='Purple') then
-            TPanel(Components[i]).Color:= $00FAA3DB;;
+          begin
+            TPanel(Components[i]).Color:= $00FDB5CC;
+            TPanel(Components[i]).Font.Color := clBlack;
+          end;
           if(cor='Teal') then
             TPanel(Components[i]).Color:= $00F2FF82;
         end
         else
         begin
-        if(cor='Dark') then
-          TPanel(Components[i]).Color:= clBtnFace;
-        if(cor='Yellow') then
-          TPanel(Components[i]).Color:= $00A0FAFC;
-        if(cor='Purple') then
-          TPanel(Components[i]).Color:= $00FAA3DB;
-        if(cor='Teal') then
-          TPanel(Components[i]).Color:= $00F2FF82;
+          if(cor='Dark') then
+          begin
+              TPanel(Components[i]).Color:= $00A9857A;
+              TPanel(Components[i]).Font.Color := clWhite;
+          end;
+          if(cor='Yellow') then
+          begin
+              TPanel(Components[i]).Color:= $00A0FAFC;
+              TPanel(Components[i]).Font.Color := clBlack;
+          end;
+          if(cor='Purple') then
+          begin
+            TPanel(Components[i]).Color:= $00FDB5CC;
+            TPanel(Components[i]).Font.Color := clBlack;
+          end;
+          if(cor='Teal') then
+            TPanel(Components[i]).Color:= $00F2FF82;
         end;
       end;
     end;
