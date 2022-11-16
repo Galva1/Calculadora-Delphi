@@ -12,6 +12,19 @@ type
     pnlFundoTotal: TPanel;
     pnlFundoResultado: TPanel;
     edtDisplay: TEdit;
+    pnlMemo: TPanel;
+    mmoResultado: TMemo;
+    pnl11: TPanel;
+    mm1: TMainMenu;
+    este1: TMenuItem;
+    Estilos1: TMenuItem;
+    D1: TMenuItem;
+    Purple1: TMenuItem;
+    eal1: TMenuItem;
+    Histrico1: TMenuItem;
+    pnl10: TPanel;
+    lblFormula: TLabel;
+    pnlFundolblFormula: TPanel;
     pnlFundoDigitos: TPanel;
     pnl0: TPanel;
     pnlVirg: TPanel;
@@ -33,19 +46,6 @@ type
     pnlAC: TPanel;
     pnlNegativo: TPanel;
     pnlDelete: TPanel;
-    pnlMemo: TPanel;
-    mmoResultado: TMemo;
-    pnl11: TPanel;
-    mm1: TMainMenu;
-    este1: TMenuItem;
-    Estilos1: TMenuItem;
-    D1: TMenuItem;
-    Purple1: TMenuItem;
-    eal1: TMenuItem;
-    Histrico1: TMenuItem;
-    pnl10: TPanel;
-    lblFormula: TLabel;
-    pnlFundolblFormula: TPanel;
     procedure pnl7Click(Sender: TObject);
     procedure pnl8Click(Sender: TObject);
     procedure pnl9Click(Sender: TObject);
@@ -176,194 +176,209 @@ end;
 
 function TForm1.OperacaoSelecionada (SinalRecebido: String): String;
 begin
-  podeReiniciarNumero := True;
-  case AnsiIndexStr((SinalRecebido),['+','-','*','/']) of
-    0:
-      begin
-        if (jahouveResultado) then
+  if podeReiniciarNumero then
+  else
+  begin
+    podeReiniciarNumero := True;
+    case AnsiIndexStr((SinalRecebido),['+','-','*','/']) of
+      0:
         begin
-          oper:='+';
-          valor1:=FloatToStr(valorResultado);
-          lblFormula.Caption:= valor1 + ' +';
-          jahouveResultado:= False;
-          valor2:='';
-          valorResultado:= 0;
-        end
-        else
-        begin
-          if valor1= '' then
+          if (jahouveResultado) then
           begin
             oper:='+';
-            valor1:= edtDisplay.Text;
-            lblFormula.Caption:=valor1 + ' +';
+            valor1:=FloatToStr(valorResultado);
+            lblFormula.Caption:= valor1 + ' +';
+            jahouveResultado:= False;
+            valor2:='';
+            valorResultado:= 0;
           end
           else
           begin
-            valor2 := edtDisplay.Text;
-            RealizarOperacao(nil);
-            AdicionarMemo(nil);
-            valor1 := FloatToStr(valorResultado);
-            oper := '+';
-            lblFormula.Caption := valor1+' +';
-            edtDisplay.Text := valor1;
-            valorResultado := 0;
+            if valor1= '' then
+            begin
+              oper:='+';
+              valor1:= edtDisplay.Text;
+              lblFormula.Caption:=valor1 + ' +';
+            end
+            else
+            begin
+              valor2 := edtDisplay.Text;
+              RealizarOperacao(nil);
+              AdicionarMemo(nil);
+              valor1 := FloatToStr(valorResultado);
+              oper := '+';
+              lblFormula.Caption := valor1+' +';
+              edtDisplay.Text := valor1;
+              valorResultado := 0;
+            end;
           end;
         end;
-      end;
-    1:
-      begin
-        if (jahouveResultado) then
+      1:
         begin
-          oper:='-';
-          valor1:=FloatToStr(valorResultado);
-          lblFormula.Caption:= valor1 + ' -';
-          jahouveResultado:= False;
-          valor2:= '';
-          valorResultado:= 0;
-        end
-        else
-        begin
-          if valor1 = '' then
+          if (jahouveResultado) then
           begin
             oper:='-';
-            valor1:=edtDisplay.Text;
-            lblFormula.Caption:=valor1 + ' -';
+            valor1:=FloatToStr(valorResultado);
+            lblFormula.Caption:= valor1 + ' -';
+            jahouveResultado:= False;
+            valor2:= '';
+            valorResultado:= 0;
           end
           else
           begin
-            valor2 := edtDisplay.Text;
-            RealizarOperacao(nil);
-            AdicionarMemo(nil);
-            valor1 := FloatToStr(valorResultado);
-            oper := '-';
-            lblFormula.Caption := valor1+' -';
-            edtDisplay.Text := valor1;
-            valorResultado := 0;
+            if valor1 = '' then
+            begin
+              oper:='-';
+              valor1:=edtDisplay.Text;
+              lblFormula.Caption:=valor1 + ' -';
+            end
+            else
+            begin
+              valor2 := edtDisplay.Text;
+              RealizarOperacao(nil);
+              AdicionarMemo(nil);
+              valor1 := FloatToStr(valorResultado);
+              oper := '-';
+              lblFormula.Caption := valor1+' -';
+              edtDisplay.Text := valor1;
+              valorResultado := 0;
+            end;
           end;
         end;
-      end;
-    2:
-      begin
-        if (jahouveResultado) then
+      2:
         begin
-          oper:='*';
-          valor1:=FloatToStr(valorResultado);
-          lblFormula.Caption:= valor1 + ' *';
-          jahouveResultado:= False;
-          valor2:='';
-          valorResultado:= 0;
-        end
-        else
-        begin
-          if valor1 = '' then
+          if (jahouveResultado) then
           begin
             oper:='*';
-            valor1:=edtDisplay.Text;
-            lblFormula.Caption:=valor1 + ' *';
+            valor1:=FloatToStr(valorResultado);
+            lblFormula.Caption:= valor1 + ' *';
+            jahouveResultado:= False;
+            valor2:='';
+            valorResultado:= 0;
           end
           else
           begin
-            valor2 := edtDisplay.Text;
-            RealizarOperacao(nil);
-            AdicionarMemo(nil);
-            valor1 := FloatToStr(valorResultado);
-            oper := '*';
-            lblFormula.Caption := valor1+' *';
-            edtDisplay.Text := valor1;
-            valorResultado := 0;
+            if valor1 = '' then
+            begin
+              oper:='*';
+              valor1:=edtDisplay.Text;
+              lblFormula.Caption:=valor1 + ' *';
+            end
+            else
+            begin
+              valor2 := edtDisplay.Text;
+              RealizarOperacao(nil);
+              AdicionarMemo(nil);
+              valor1 := FloatToStr(valorResultado);
+              oper := '*';
+              lblFormula.Caption := valor1+' *';
+              edtDisplay.Text := valor1;
+              valorResultado := 0;
+            end;
           end;
         end;
-      end;
-    3:
-      begin
-        if (jahouveResultado) then
+      3:
         begin
-          oper:='/';
-          valor1:=FloatToStr(valorResultado);
-          lblFormula.Caption:= valor1 + ' /';
-          jahouveResultado:= False;
-          valor2:= '';
-          valorResultado:= 0;
-        end
-        else
-        begin
-          if valor1 = '' then
+          if (jahouveResultado) then
           begin
             oper:='/';
-            valor1:=edtDisplay.Text;
-            lblFormula.Caption:=valor1 + ' /';
+            valor1:=FloatToStr(valorResultado);
+            lblFormula.Caption:= valor1 + ' /';
+            jahouveResultado:= False;
+            valor2:= '';
+            valorResultado:= 0;
           end
           else
           begin
-          if valor2= '0' then
-                ShowMessage('Não pode dividir por zero')
-          else
-          begin
-            valor2 := edtDisplay.Text;
-            RealizarOperacao(nil);
-            AdicionarMemo(nil);
-            valor1 := FloatToStr(valorResultado);
-            oper := '/';
-            lblFormula.Caption := valor1+' /';
-            edtDisplay.Text := valor1;
-            valorResultado := 0;
-          end;
+            if valor1 = '' then
+            begin
+              oper:='/';
+              valor1:=edtDisplay.Text;
+              lblFormula.Caption:=valor1 + ' /';
+            end
+            else
+            begin
+            if valor2= '0' then
+                  ShowMessage('Não pode dividir por zero')
+            else
+            begin
+              valor2 := edtDisplay.Text;
+              RealizarOperacao(nil);
+              AdicionarMemo(nil);
+              valor1 := FloatToStr(valorResultado);
+              oper := '/';
+              lblFormula.Caption := valor1+' /';
+              edtDisplay.Text := valor1;
+              valorResultado := 0;
+            end;
 
+            end;
           end;
         end;
-      end;
+    end;
   end;
+
 end;
 
 procedure TForm1.pnl7Click(Sender: TObject);
 begin
 
   CheckNumeroColocado('7');
+  podeReiniciarNumero := False;
 end;
 
 procedure TForm1.pnl8Click(Sender: TObject);
 begin
   CheckNumeroColocado('8');
+  podeReiniciarNumero := False;
 end;
 
 procedure TForm1.pnl9Click(Sender: TObject);
 begin
   CheckNumeroColocado('9');
+  podeReiniciarNumero := False;
 end;
 
 procedure TForm1.pnl4Click(Sender: TObject);
 begin
   CheckNumeroColocado('4');
+  podeReiniciarNumero := False;
 end;
 
 procedure TForm1.pnl5Click(Sender: TObject);
 begin
   CheckNumeroColocado('5');
+  podeReiniciarNumero := False;
 end;
 
 procedure TForm1.pnl6Click(Sender: TObject);
 begin
   CheckNumeroColocado('6');
+  podeReiniciarNumero := False;
 end;
 
 procedure TForm1.pnl1Click(Sender: TObject);
 begin
   CheckNumeroColocado('1');
+  podeReiniciarNumero := False;
 end;
 
 procedure TForm1.pnl2Click(Sender: TObject);
 begin
   CheckNumeroColocado('2');
+  podeReiniciarNumero := False;
 end;
 
 procedure TForm1.pnl3Click(Sender: TObject);
 begin
   CheckNumeroColocado('3');
+  podeReiniciarNumero := False;
 end;
 
 procedure TForm1.pnl0Click(Sender: TObject);
 begin
   CheckNumeroColocado('0');
+  podeReiniciarNumero := False;
 end;
 
 procedure TForm1.pnlVirgClick(Sender: TObject);
@@ -382,9 +397,9 @@ end;
 procedure TForm1.pnlDeleteClick(Sender: TObject);
 //const
 //  number: number = [0..9];
-//var
+var
 //i: integer;
-//verificarVirgula, verificarNegativo: Integer;
+{verificarVirgula} verificarNegativo: Integer;
 begin
   if jahouveResultado then
   begin
@@ -393,7 +408,18 @@ begin
        lblFormula.Caption := '';
   end
   else
+  begin
       edtDisplay.Text:= copy(edtDisplay.Text,1,length(edtDisplay.Text)-1);
+      if not(temVirgula) and (TemNegativo) then
+      begin
+        verificarNegativo := (length(edtDisplay.Text));
+        if verificarNegativo = 1 then
+          begin
+            edtDisplay.Text := '0';
+            temNegativo := False;
+          end;
+      end;
+  end;
   {else
   begin
       edtDisplay.Text:= copy(edtDisplay.Text,1,length(edtDisplay.Text)-1);
@@ -604,15 +630,6 @@ begin
   if (edtDisplay.Text = '') then
       edtDisplay.Text:='0';
   podeReiniciarNumero := False;
-  if not(temVirgula) and (TemNegativo) then
-  begin
-        verificarNegativo := (length(edtDisplay.Text));
-        if verificarNegativo = 1 then
-          begin
-            edtDisplay.Text := '0';
-            temNegativo := False;
-          end;
-  end;
   if (temVirgula) and not(temNegativo) then
   begin
         VerificarVirgula := 0;
@@ -872,6 +889,7 @@ begin
   Clipboard.Destroy;
   if edtDisplay.SelLength>0 then
     edtDisplay.SelLength:= 0;
+  Clipboard.AsText := '';
 end;
 
 end.

@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 426
-  Top = 116
-  Width = 641
+  Left = 243
+  Top = 71
+  Width = 1280
   Height = 674
   Caption = 'Calculadora'
   Color = clBtnFace
@@ -17,16 +17,16 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object pnlMemo: TPanel
-    Left = 358
+    Left = 894
     Top = 0
-    Width = 0
+    Width = 100
     Height = 561
     Color = cl3DDkShadow
     TabOrder = 1
     object mmoResultado: TMemo
       Left = 1
       Top = 1
-      Width = 338
+      Width = 98
       Height = 505
       Align = alTop
       Enabled = False
@@ -51,7 +51,7 @@ object Form1: TForm1
   object pnlFundoTotal: TPanel
     Left = 0
     Top = 0
-    Width = 361
+    Width = 569
     Height = 561
     Color = cl3DDkShadow
     TabOrder = 0
@@ -81,18 +81,46 @@ object Form1: TForm1
         OnMouseDown = edtDisplayMouseDown
       end
     end
-    object pnlFundoDigitos: TPanel
-      Left = 8
-      Top = 136
-      Width = 345
-      Height = 409
+    object pnlFundolblFormula: TPanel
+      Left = 104
+      Top = 13
+      Width = 249
+      Height = 44
       Color = cl3DDkShadow
       TabOrder = 1
+      object pnl10: TPanel
+        Left = 8
+        Top = 8
+        Width = 233
+        Height = 25
+        TabOrder = 0
+        object lblFormula: TLabel
+          Left = 228
+          Top = 1
+          Width = 4
+          Height = 23
+          Align = alRight
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+        end
+      end
+    end
+    object pnlFundoDigitos: TPanel
+      Left = 8
+      Top = 144
+      Width = 545
+      Height = 401
+      Color = cl3DDkShadow
+      TabOrder = 2
       object pnl0: TPanel
-        Left = 96
-        Top = 336
-        Width = 73
-        Height = 65
+        Left = 208
+        Top = 320
+        Width = 113
+        Height = 81
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -104,10 +132,10 @@ object Form1: TForm1
         OnClick = pnl0Click
       end
       object pnlVirg: TPanel
-        Left = 176
-        Top = 336
-        Width = 73
-        Height = 65
+        Left = 96
+        Top = 320
+        Width = 113
+        Height = 81
         Caption = ','
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -119,10 +147,10 @@ object Form1: TForm1
         OnClick = pnlVirgClick
       end
       object pnlResult: TPanel
-        Left = 256
-        Top = 336
-        Width = 73
-        Height = 65
+        Left = 432
+        Top = 320
+        Width = 113
+        Height = 81
         Caption = '='
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -269,10 +297,10 @@ object Form1: TForm1
         OnClick = pnl9Click
       end
       object pnlMenos: TPanel
-        Left = 256
-        Top = 176
-        Width = 73
-        Height = 65
+        Left = 432
+        Top = 160
+        Width = 113
+        Height = 81
         Caption = '-'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -284,10 +312,10 @@ object Form1: TForm1
         OnClick = pnlMenosClick
       end
       object pnlMult: TPanel
-        Left = 256
-        Top = 96
-        Width = 73
-        Height = 65
+        Left = 432
+        Top = 80
+        Width = 113
+        Height = 81
         Caption = 'x'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -299,10 +327,10 @@ object Form1: TForm1
         OnClick = pnlMultClick
       end
       object pnlDiv: TPanel
-        Left = 256
-        Top = 16
-        Width = 73
-        Height = 65
+        Left = 432
+        Top = 0
+        Width = 113
+        Height = 81
         Caption = #247
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -314,10 +342,10 @@ object Form1: TForm1
         OnClick = pnlDivClick
       end
       object pnlMais: TPanel
-        Left = 256
-        Top = 256
-        Width = 73
-        Height = 65
+        Left = 432
+        Top = 240
+        Width = 113
+        Height = 81
         Caption = '+'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -329,10 +357,10 @@ object Form1: TForm1
         OnClick = pnlMaisClick
       end
       object pnlC: TPanel
-        Left = 16
-        Top = 16
-        Width = 73
-        Height = 65
+        Left = 96
+        Top = 0
+        Width = 113
+        Height = 81
         Caption = 'CE'
         Color = clMaroon
         Font.Charset = DEFAULT_CHARSET
@@ -345,10 +373,10 @@ object Form1: TForm1
         OnClick = pnlCClick
       end
       object pnlAC: TPanel
-        Left = 96
-        Top = 16
-        Width = 73
-        Height = 65
+        Left = 208
+        Top = 0
+        Width = 113
+        Height = 81
         Caption = 'C'
         Color = clMaroon
         Font.Charset = DEFAULT_CHARSET
@@ -361,10 +389,10 @@ object Form1: TForm1
         OnClick = pnlACClick
       end
       object pnlNegativo: TPanel
-        Left = 176
-        Top = 16
-        Width = 73
-        Height = 65
+        Left = 320
+        Top = 320
+        Width = 113
+        Height = 81
         Caption = '+/-'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -376,10 +404,10 @@ object Form1: TForm1
         OnClick = pnlNegativoClick
       end
       object pnlDelete: TPanel
-        Left = 16
-        Top = 336
-        Width = 73
-        Height = 65
+        Left = 320
+        Top = 0
+        Width = 113
+        Height = 81
         Caption = '<='
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -389,34 +417,6 @@ object Form1: TForm1
         ParentFont = False
         TabOrder = 19
         OnClick = pnlDeleteClick
-      end
-    end
-    object pnlFundolblFormula: TPanel
-      Left = 104
-      Top = 13
-      Width = 249
-      Height = 44
-      Color = cl3DDkShadow
-      TabOrder = 2
-      object pnl10: TPanel
-        Left = 8
-        Top = 8
-        Width = 233
-        Height = 25
-        TabOrder = 0
-        object lblFormula: TLabel
-          Left = 228
-          Top = 1
-          Width = 4
-          Height = 23
-          Align = alRight
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-        end
       end
     end
   end
