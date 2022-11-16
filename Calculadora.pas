@@ -125,6 +125,9 @@ begin
     begin
       if jaHaNumero(nil) then
       begin
+//        if NumeroDigitado = ',' then
+//           edtDisplay
+
         ResetarNumeros(nil);
         edtDisplay.Text := NumeroDigitado;
       end
@@ -377,20 +380,21 @@ begin
 end;
 
 procedure TForm1.pnlDeleteClick(Sender: TObject);
-const
-  number: number = [0..9];
-var
-i: integer;
-verificarVirgula, verificarNegativo: Integer;
+//const
+//  number: number = [0..9];
+//var
+//i: integer;
+//verificarVirgula, verificarNegativo: Integer;
 begin
   if jahouveResultado then
-    begin
-      valorResultado := 0;
-      jahouveResultado := False;
-      lblFormula.Caption := '';
-
-    end
+  begin
+       valorResultado := 0;
+       jahouveResultado := False;
+       lblFormula.Caption := '';
+  end
   else
+      edtDisplay.Text:= copy(edtDisplay.Text,1,length(edtDisplay.Text)-1);
+  {else
   begin
       edtDisplay.Text:= copy(edtDisplay.Text,1,length(edtDisplay.Text)-1);
       if not(temVirgula) and (TemNegativo) then
@@ -432,7 +436,7 @@ begin
       end;
   end;
   if(edtDisplay.Text = '') then
-    edtDisplay.Text := '0';
+    edtDisplay.Text := '0';}
 end;
 
 procedure TForm1.pnlCClick(Sender: TObject);
@@ -593,13 +597,50 @@ end;
 
 procedure TForm1.edtDisplayChange(Sender: TObject);
 var
-  vPosicao: Integer;
+  vPosicao, i, verificarNegativo, VerificarVirgula: Integer;
   valorSalvo: extended;
 begin
   edtDisplay.SelStart:= Length(edtDisplay.text);
   if (edtDisplay.Text = '') then
       edtDisplay.Text:='0';
   podeReiniciarNumero := False;
+  if not(temVirgula) and (TemNegativo) then
+  begin
+        verificarNegativo := (length(edtDisplay.Text));
+        if verificarNegativo = 1 then
+          begin
+            edtDisplay.Text := '0';
+            temNegativo := False;
+          end;
+  end;
+  if (temVirgula) and not(temNegativo) then
+  begin
+        VerificarVirgula := 0;
+        try
+          for i := 1 to length(edtDisplay.Text) do
+            begin
+              verificarVirgula := StrToInt(edtDisplay.Text[i]);
+            end;
+            temVirgula := False;
+
+        except
+          temVirgula := True;
+        end;
+  end;
+  if (temVirgula) and (temNegativo) then
+  begin
+     verificarVirgula := 0;
+     VerificarNegativo := 0;
+     try
+        for i := 2 to length(edtDisplay.Text) do
+        begin
+             verificarVirgula := StrToInt(edtDisplay.Text[i]);
+        end;
+        temVirgula := False;
+     except
+        temVirgula := True;
+     end;
+  end;
 
 end;
 
