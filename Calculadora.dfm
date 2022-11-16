@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 236
-  Top = 120
+  Left = 426
+  Top = 116
   Width = 641
   Height = 674
   Caption = 'Calculadora'
@@ -61,7 +61,7 @@ object Form1: TForm1
       Width = 345
       Height = 73
       TabOrder = 0
-      object edtResult: TEdit
+      object edtDisplay: TEdit
         Left = 8
         Top = 8
         Width = 329
@@ -76,9 +76,9 @@ object Form1: TForm1
         ParentFont = False
         TabOrder = 0
         Text = '0'
-        OnChange = edtResultChange
-        OnKeyPress = edtResultKeyPress
-        OnMouseDown = edtResultMouseDown
+        OnChange = edtDisplayChange
+        OnKeyPress = edtDisplayKeyPress
+        OnMouseDown = edtDisplayMouseDown
       end
     end
     object pnlFundoDigitos: TPanel
@@ -391,7 +391,7 @@ object Form1: TForm1
         OnClick = pnlDeleteClick
       end
     end
-    object pnlFundolblResultado: TPanel
+    object pnlFundolblFormula: TPanel
       Left = 104
       Top = 13
       Width = 249
@@ -404,7 +404,7 @@ object Form1: TForm1
         Width = 233
         Height = 25
         TabOrder = 0
-        object lblResult: TLabel
+        object lblFormula: TLabel
           Left = 228
           Top = 1
           Width = 4
