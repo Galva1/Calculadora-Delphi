@@ -390,9 +390,39 @@ begin
 end;
 
 procedure TForm1.pnlVirgClick(Sender: TObject);
+var
+  i: integer;
 begin
-  if not(temVirgula) then
+  for i:=1 to Length(edtDisplay.Text) do
   begin
+    if edtDisplay.Text[i] = ',' then
+    begin
+      temVirgula := True;
+      Break;
+
+    end
+    else
+      temVirgula := False;
+  end;
+  if temVirgula then
+  begin
+    edtDisplay.Text := edtDisplay.Text;
+  end
+  else
+  begin
+    {
+    VerificarVirgula := 0;
+    try
+      for i := 1 to length(edtDisplay.Text) do
+      begin
+        verificarVirgula := StrToInt(edtDisplay.Text[i]);
+      end;
+      temVirgula := False;
+
+    except
+      temVirgula := True;
+    end;
+    }
     if jahouveResultado then
     begin
       edtDisplay.Text := '0';
@@ -400,10 +430,7 @@ begin
     end;
     edtDisplay.Text := edtDisplay.Text+',';
     temVirgula := True;
-
-  end
-  else
-    edtDisplay.Text := edtDisplay.Text;
+  end;
 end;
 
 procedure TForm1.pnlDeleteClick(Sender: TObject);
