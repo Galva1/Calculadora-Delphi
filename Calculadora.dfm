@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 179
-  Top = 39
-  Width = 1280
-  Height = 674
+  Left = 752
+  Top = 85
+  Width = 776
+  Height = 621
   Caption = 'Calculadora'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,9 +19,10 @@ object Form1: TForm1
   object pnlMemo: TPanel
     Left = 462
     Top = 0
-    Width = 340
+    Width = 0
     Height = 553
-    Color = 16350109
+    BevelOuter = bvNone
+    Color = 5258554
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 5452337
     Font.Height = -11
@@ -34,13 +35,18 @@ object Form1: TForm1
       Top = 16
       Width = 336
       Height = 498
-      Color = 16627148
+      BevelInner = bvSpace
+      BevelOuter = bvSpace
+      BorderStyle = bsNone
+      Color = 11109754
+      Ctl3D = False
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
+      Font.Color = clBlack
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = []
+      ParentCtl3D = False
       ParentFont = False
       TabOrder = 0
     end
@@ -51,7 +57,7 @@ object Form1: TForm1
       Height = 25
       BevelOuter = bvLowered
       Caption = 'Limpar'
-      Color = 16627148
+      Color = 11109754
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -16
@@ -67,7 +73,8 @@ object Form1: TForm1
     Top = 0
     Width = 465
     Height = 553
-    Color = 16350109
+    BevelOuter = bvNone
+    Color = 5258554
     TabOrder = 0
     object pnlFundolblFormula: TPanel
       Left = 112
@@ -89,7 +96,8 @@ object Form1: TForm1
       Top = 128
       Width = 481
       Height = 433
-      Color = 16350109
+      BevelOuter = bvNone
+      Color = 5258554
       TabOrder = 2
       object pnlC: TPanel
         Left = 8
@@ -98,7 +106,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = 'CE'
-        Color = 16350109
+        Color = 5258554
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindow
         Font.Height = -27
@@ -115,9 +123,9 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = 'C'
-        Color = 16350109
+        Color = 5258554
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 16711808
+        Font.Color = clMaroon
         Font.Height = -27
         Font.Name = 'Microsoft JhengHei'
         Font.Style = []
@@ -132,7 +140,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '<='
-        Color = 16350109
+        Color = 5258554
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -149,7 +157,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = #247
-        Color = 16350109
+        Color = 5258554
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -166,7 +174,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = 'x'
-        Color = 16350109
+        Color = 5258554
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -183,7 +191,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '-'
-        Color = 16350109
+        Color = 5258554
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -33
@@ -200,7 +208,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '+'
-        Color = 16350109
+        Color = 5258554
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -217,7 +225,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '='
-        Color = 16350109
+        Color = 5258554
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -234,7 +242,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '+/-'
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -251,7 +259,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '3'
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -268,7 +276,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '6'
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -285,7 +293,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '9'
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -302,7 +310,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '0'
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -319,7 +327,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '2'
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -336,7 +344,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '5'
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -353,7 +361,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '8'
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -370,7 +378,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = ','
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -387,7 +395,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '1'
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -404,7 +412,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '4'
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -421,7 +429,7 @@ object Form1: TForm1
         Height = 81
         BevelOuter = bvLowered
         Caption = '7'
-        Color = 16627148
+        Color = 11109754
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Height = -27
@@ -433,14 +441,15 @@ object Form1: TForm1
       end
     end
     object pnlFundoResultado: TPanel
-      Left = 0
+      Left = 8
       Top = 16
-      Width = 489
+      Width = 449
       Height = 113
-      Color = 16627148
+      BevelOuter = bvNone
+      Color = 11109754
       TabOrder = 0
       object lblFormula: TLabel
-        Left = 128
+        Left = 120
         Top = 8
         Width = 320
         Height = 25
@@ -456,13 +465,13 @@ object Form1: TForm1
       end
     end
     object edtDisplay: TEdit
-      Left = 8
+      Left = 16
       Top = 48
-      Width = 449
+      Width = 433
       Height = 68
       BiDiMode = bdRightToLeft
       BorderStyle = bsNone
-      Color = 16627148
+      Color = 11109754
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -53

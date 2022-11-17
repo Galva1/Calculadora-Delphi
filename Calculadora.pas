@@ -102,7 +102,6 @@ uses Unit2;
 
 {$R *.dfm}
 
-
 function Tform1.jaHaNumero(Sender: TObject):Boolean;
 begin
   Result := False;
@@ -125,9 +124,6 @@ begin
     begin
       if jaHaNumero(nil) then
       begin
-//        if NumeroDigitado = ',' then
-//           edtDisplay
-
         ResetarNumeros(nil);
         edtDisplay.Text := NumeroDigitado;
       end
@@ -156,7 +152,9 @@ end;
 
 procedure TForm1.AdicionarMemo(Sender: TObject);
 begin
-  histOperacoes:= valor1+' '+oper+' '+valor2+' = '+FloatToStr(valorResultado);
+  if valor1 = '0,' then
+     valor1 := '0';
+  histOperacoes:= ' '+valor1+' '+oper+' '+valor2+' = '+FloatToStr(valorResultado);
   if mmoResultado.Lines[0] = histOperacoes then
   else
     mmoResultado.Lines.Insert(0,histOperacoes);
@@ -168,7 +166,7 @@ begin
     valorResultado:= StrToFloat(valor1) + StrToFloat(valor2);
   if oper = '-' then
     valorResultado:= StrToFloat(valor1) - StrToFloat(valor2);
-  if oper = 'x' then
+  if oper = '*' then
     valorResultado:= StrToFloat(valor1) * StrToFloat(valor2);
   if oper = '/' then
     valorResultado:= StrToFloat(valor1) / StrToFloat(valor2);
@@ -177,6 +175,15 @@ end;
 function TForm1.OperacaoSelecionada (SinalRecebido: String): String;
 begin
   if podeReiniciarNumero then
+  begin
+     case AnsiIndexStr((SinalRecebido),['+','-','*','/']) of
+     0: oper := '+';
+     1: oper := '-';
+     2: oper := '*';
+     3: oper := '/';
+     end;
+     lblFormula.Caption := valor1 + ' ' + oper;
+  end
   else
   begin
     podeReiniciarNumero := True;
@@ -299,7 +306,7 @@ begin
             else
             begin
             if valor2= '0' then
-                  ShowMessage('Não pode dividir por zero')
+              ShowMessage('Não é possível dividir por zero')
             else
             begin
               valor2 := edtDisplay.Text;
@@ -395,30 +402,34 @@ begin
 end;
 
 procedure TForm1.pnlDeleteClick(Sender: TObject);
-//const
-//  number: number = [0..9];
+
 var
-//i: integer;
-{verificarVirgula} verificarNegativo: Integer;
+verificarNegativo: Integer;
 begin
   if jahouveResultado then
   begin
        valorResultado := 0;
        jahouveResultado := False;
        lblFormula.Caption := '';
+       podeReiniciarNumero := True;
   end
   else
   begin
-      edtDisplay.Text:= copy(edtDisplay.Text,1,length(edtDisplay.Text)-1);
-      if not(temVirgula) and (TemNegativo) then
-      begin
-        verificarNegativo := (length(edtDisplay.Text));
-        if verificarNegativo = 1 then
-          begin
-            edtDisplay.Text := '0';
-            temNegativo := False;
-          end;
-      end;
+       if podeReiniciarNumero then
+       else
+       begin
+            edtDisplay.Text:= copy(edtDisplay.Text,1,length(edtDisplay.Text)-1);
+            if not(temVirgula) and (TemNegativo) then
+            begin
+            verificarNegativo := (length(edtDisplay.Text));
+              if verificarNegativo = 1 then
+              begin
+                   edtDisplay.Text := '0';
+                   temNegativo := False;
+              end;
+            end;
+       end;
+
   end;
 end;
 
@@ -509,6 +520,7 @@ ArmazenamentoValor:Extended;
 begin
   if oper='' then
   begin
+    podeReiniciarNumero := True;
     valor1:=edtDisplay.Text;
     lblFormula.Caption:= valor1+' =';
   end
@@ -547,7 +559,7 @@ begin
     3:
       begin
         if valor2 = '0' then
-          ShowMessage('Não pode dividir por zero')
+           ShowMessage('Não é possível dividir por zero')
         else
         begin
           valorResultado:=StrToFloat(valor1) / StrToFloat(valor2);
@@ -739,8 +751,10 @@ begin
   Form1.pnlFundoDigitos.Color := $00503D3A;
   Form1.pnlFundoTotal.Color:= $00503D3A;
   Form1.pnlMemo.Color := $00503D3A;
+  Form1.mmoResultado.Font.Color := clBlack;
   Form1.mmoResultado.Color := $00A9857A;
   Form1.pnl11.Color := $00A9857A;
+
 
 end;
 
@@ -757,12 +771,14 @@ begin
   Form1.pnlMult.Color := $0046BCE3;
   Form1.pnlMenos.Color := $0046BCE3;
   Form1.pnlMais.Color := $0046BCE3;
+  Form1.pnlResult.Color := $0046BCE3;
   Form1.edtDisplay.Color := $0083DEFC;
   Form1.edtDisplay.Font.Color := clBlack;
   Form1.pnlFundoResultado.Color := $0083DEFC;
   Form1.pnlFundoDigitos.Color := $0046BCE3;
   Form1.pnlFundoTotal.Color:= $0046BCE3;
   Form1.pnlMemo.Color := $0046BCE3;
+  Form1.mmoResultado.Font.Color := clBlack;
   Form1.mmoResultado.Color := $0083DEFC;
   Form1.pnl11.Color := $0083DEFC;
 
@@ -780,13 +796,14 @@ begin
   Form1.pnlMult.Color := $00F97B9D;
   Form1.pnlMenos.Color := $00F97B9D;
   Form1.pnlMais.Color := $00F97B9D;
-  Form1.pnlResult.Color := $00FDB5CC;
+  Form1.pnlResult.Color := $00F97B9D;
   Form1.edtDisplay.Color := $00FDB5CC;
   Form1.edtDisplay.Font.Color := clBlack;
   Form1.pnlFundoResultado.Color := $00FDB5CC;
   Form1.pnlFundoDigitos.Color := $00F97B9D;
   Form1.pnlFundoTotal.Color:= $00F97B9D;
   Form1.pnlMemo.Color := $00F97B9D;
+  Form1.mmoResultado.Font.Color := clBlack;
   Form1.mmoResultado.Color := $00FDB5CC;
   Form1.pnl11.Color := $00FDB5CC;
 
@@ -795,17 +812,28 @@ end;
 procedure TForm1.eal1Click(Sender: TObject);
 begin
   MudarCor('Teal');
-  Form1.pnlAc.Color := clMaroon;
-  Form1.pnlC.Color := clMaroon;
-  Form1.pnlFundoResultado.Color := $00C6BC00;
-  Form1.pnl11.Color:= $00C6BC00;
-  Form1.pnl10.Color:= $00F2FF82;
-  Form1.pnlMemo.Color := clTeal;
-  Form1.pnlFundoDigitos.Color := clTeal;
-  Form1.pnlFundoTotal.Color:= clTeal;
-  Form1.pnlFundolblFormula.Color := clTeal;
-  Form1.mmoResultado.Color:= $00F2FF82;
-  Form1.edtDisplay.Color:=$00F2FF82;
+  Form1.pnlAc.Color := $00849D40;
+  Form1.pnlC.Color := $00849D40;
+  Form1.pnlDelete.Color := $00849D40;
+  Form1.pnlDiv.Color := $00849D40;
+  Form1.pnlMult.Color := $00849D40;
+  Form1.pnlMenos.Color := $00849D40;
+  Form1.pnlMais.Color := $00849D40;
+  Form1.pnlResult.Color := $00849D40;
+  Form1.pnlFundoDigitos.Color := $00849D40;
+  Form1.pnlFundoTotal.Color:= $00849D40;
+  Form1.pnlMemo.Color := $00849D40;
+
+  Form1.pnlAc.Font.Color := $004F5109;
+
+  Form1.lblFormula.Font.Color:= clBlack;
+  Form1.edtDisplay.Font.Color := clBlack;
+  Form1.mmoResultado.Font.Color := clBlack;
+
+  Form1.edtDisplay.Color := $00BDB877;
+  Form1.pnlFundoResultado.Color := $00BDB877;
+  Form1.mmoResultado.Color := $00BDB877;
+  Form1.pnl11.Color := $00BDB877;
 
 end;
 
@@ -837,7 +865,10 @@ begin
             TPanel(Components[i]).Font.Color := clBlack;
           end;
           if(cor='Teal') then
-            TPanel(Components[i]).Color:= $00F2FF82;
+          begin
+            TPanel(Components[i]).Color:= $00BDB877;
+            TPanel(Components[i]).Font.Color := clWhite;
+          end;
         end
         else
         begin
@@ -857,7 +888,10 @@ begin
             TPanel(Components[i]).Font.Color := clBlack;
           end;
           if(cor='Teal') then
-            TPanel(Components[i]).Color:= $00F2FF82;
+          begin
+            TPanel(Components[i]).Color:= $00BDB877;
+            TPanel(Components[i]).Font.Color := clWhite;
+          end;
         end;
       end;
     end;
