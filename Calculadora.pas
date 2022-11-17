@@ -182,6 +182,7 @@ begin
      2: oper := '*';
      3: oper := '/';
      end;
+     valor1:= edtDisplay.Text;
      lblFormula.Caption := valor1 + ' ' + oper;
   end
   else
@@ -393,9 +394,13 @@ begin
   if not(temVirgula) then
   begin
     if jahouveResultado then
+    begin
       edtDisplay.Text := '0';
+      jahouveResultado := False;
+    end;
     edtDisplay.Text := edtDisplay.Text+',';
     temVirgula := True;
+
   end
   else
     edtDisplay.Text := edtDisplay.Text;
@@ -597,21 +602,21 @@ var
 begin
   edtDisplay.SelStart:= Length(edtDisplay.text);
   if (edtDisplay.Text = '') then
-      edtDisplay.Text:='0';
+    edtDisplay.Text:='0';
   podeReiniciarNumero := False;
   if (temVirgula) and not(temNegativo) then
   begin
-        VerificarVirgula := 0;
-        try
-          for i := 1 to length(edtDisplay.Text) do
-            begin
-              verificarVirgula := StrToInt(edtDisplay.Text[i]);
-            end;
-            temVirgula := False;
+    VerificarVirgula := 0;
+    try
+      for i := 1 to length(edtDisplay.Text) do
+      begin
+        verificarVirgula := StrToInt(edtDisplay.Text[i]);
+      end;
+      temVirgula := False;
 
-        except
-          temVirgula := True;
-        end;
+    except
+      temVirgula := True;
+    end;
   end;
   if (temVirgula) and (temNegativo) then
   begin
@@ -751,7 +756,7 @@ begin
   Form1.pnlFundoDigitos.Color := $00503D3A;
   Form1.pnlFundoTotal.Color:= $00503D3A;
   Form1.pnlMemo.Color := $00503D3A;
-  Form1.mmoResultado.Font.Color := clBlack;
+  Form1.mmoResultado.Font.Color := clWhite;
   Form1.mmoResultado.Color := $00A9857A;
   Form1.pnl11.Color := $00A9857A;
 

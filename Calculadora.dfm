@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 752
-  Top = 85
+  Left = 388
+  Top = 146
   Width = 776
   Height = 621
   Caption = 'Calculadora'
@@ -40,14 +40,14 @@ object Form1: TForm1
       BorderStyle = bsNone
       Color = 11109754
       Ctl3D = False
-      Enabled = False
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -20
+      Font.Color = clWhite
+      Font.Height = -16
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
+      ReadOnly = True
       TabOrder = 0
     end
     object pnl11: TPanel
@@ -99,39 +99,22 @@ object Form1: TForm1
       BevelOuter = bvNone
       Color = 5258554
       TabOrder = 2
-      object pnlC: TPanel
-        Left = 8
+      object pnlDiv: TPanel
+        Left = 344
         Top = 8
         Width = 113
         Height = 81
         BevelOuter = bvLowered
-        Caption = 'CE'
+        Caption = #247
         Color = 5258554
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindow
+        Font.Color = clWhite
         Font.Height = -27
         Font.Name = 'Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
-        TabOrder = 16
-        OnClick = pnlCClick
-      end
-      object pnlAC: TPanel
-        Left = 120
-        Top = 8
-        Width = 113
-        Height = 81
-        BevelOuter = bvLowered
-        Caption = 'C'
-        Color = 5258554
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clMaroon
-        Font.Height = -27
-        Font.Name = 'Microsoft JhengHei'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 17
-        OnClick = pnlACClick
+        TabOrder = 14
+        OnClick = pnlDivClick
       end
       object pnlDelete: TPanel
         Left = 232
@@ -150,22 +133,39 @@ object Form1: TForm1
         TabOrder = 19
         OnClick = pnlDeleteClick
       end
-      object pnlDiv: TPanel
-        Left = 344
+      object pnlAC: TPanel
+        Left = 120
         Top = 8
         Width = 113
         Height = 81
         BevelOuter = bvLowered
-        Caption = #247
+        Caption = 'C'
         Color = 5258554
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = clMaroon
         Font.Height = -27
         Font.Name = 'Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
-        TabOrder = 14
-        OnClick = pnlDivClick
+        TabOrder = 17
+        OnClick = pnlACClick
+      end
+      object pnlC: TPanel
+        Left = 8
+        Top = 8
+        Width = 113
+        Height = 81
+        BevelOuter = bvLowered
+        Caption = 'CE'
+        Color = 5258554
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindow
+        Font.Height = -27
+        Font.Name = 'Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 16
+        OnClick = pnlCClick
       end
       object pnlMult: TPanel
         Left = 344
@@ -449,16 +449,16 @@ object Form1: TForm1
       Color = 11109754
       TabOrder = 0
       object lblFormula: TLabel
-        Left = 120
+        Left = 8
         Top = 8
-        Width = 320
+        Width = 432
         Height = 25
         Align = alCustom
         Alignment = taRightJustify
         AutoSize = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = -17
+        Font.Height = -13
         Font.Name = 'Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
