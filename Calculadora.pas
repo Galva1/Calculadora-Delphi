@@ -101,8 +101,6 @@ var
 
 implementation
 
-uses Unit2;
-
 {$R *.dfm}
 
 function Tform1.jaHaNumero(Sender: TObject):Boolean;

@@ -604,9 +604,9 @@ object Form1: TForm1
         ParentFont = False
       end
       object lblDisplay: TLabel
-        Left = 8
+        Left = 409
         Top = 28
-        Width = 433
+        Width = 32
         Height = 71
         Alignment = taRightJustify
         Caption = '0'
