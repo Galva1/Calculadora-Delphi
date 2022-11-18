@@ -46,6 +46,7 @@ type
     pnlAC: TPanel;
     pnlNegativo: TPanel;
     pnlDelete: TPanel;
+    lblDisplay: TLabel;
     procedure pnl7Click(Sender: TObject);
     procedure pnl8Click(Sender: TObject);
     procedure pnl9Click(Sender: TObject);
@@ -84,6 +85,8 @@ type
     procedure AdicionarMemo(Sender: TObject);
     function OperacaoSelecionada (SinalRecebido: String): String;
     function jaHaNumero(Sender: TObject):Boolean;
+    procedure mmoResultadoChange(Sender: TObject);
+    procedure mmoResultadoClick(Sender: TObject);
   private
     { Private declarations }
     temVirgula, temNegativo, jahouveResultado, podeReiniciarNumero : Boolean;
@@ -479,6 +482,7 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+
   Form1.AutoSize := True;
   temVirgula := False;
   jahouveResultado := False;
@@ -609,17 +613,21 @@ end;
 
 procedure TForm1.pnlACClick(Sender: TObject);
 begin
-  valor1:= '';
-  valor2:= '';
+  valor1 := '';
+  valor2 := '';
+  valorResultado := 0;
+  jahouveResultado := False;
+  podeReiniciarNumero := False;
   temVirgula := False;
   temNegativo := False;
-  edtDisplay.Text:='0';
-  lblFormula.Caption:='';
+  edtDisplay.Text := '0';
+  lblFormula.Caption := '';
 end;
 
 procedure TForm1.pnl11Click(Sender: TObject);
 begin
   mmoResultado.Clear;
+  mmoResultado.ScrollBars := ssNone;
 end;
 
 procedure TForm1.edtDisplayChange(Sender: TObject);
@@ -627,6 +635,7 @@ var
   vPosicao, i, verificarNegativo, VerificarVirgula: Integer;
   valorSalvo: extended;
 begin
+  lblDisplay.Caption := edtDisplay.Text;
   edtDisplay.SelStart:= Length(edtDisplay.text);
   if (edtDisplay.Text = '') then
     edtDisplay.Text:='0';
@@ -948,6 +957,18 @@ begin
   if edtDisplay.SelLength>0 then
     edtDisplay.SelLength:= 0;
   Clipboard.AsText := '';
+end;
+
+procedure TForm1.mmoResultadoChange(Sender: TObject);
+begin
+  if mmoResultado.Lines[24] <> '' then
+    mmoResultado.ScrollBars:= ssVertical;
+
+end;
+
+procedure TForm1.mmoResultadoClick(Sender: TObject);
+begin
+  edtDisplay.SetFocus();
 end;
 
 end.
