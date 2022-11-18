@@ -1,10 +1,9 @@
 object Form1: TForm1
   Left = 598
   Top = 133
-  Width = 481
+  Width = 629
   Height = 612
   Cursor = crArrow
-  AutoSize = True
   Caption = 'Calculadora'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -191,16 +190,16 @@ object Form1: TForm1
       OnClick = mmoResultadoClick
     end
     object pnl11: TPanel
-      Left = 236
+      Left = 4
       Top = 520
-      Width = 73
-      Height = 25
+      Width = 61
+      Height = 17
       BevelOuter = bvLowered
       Caption = 'Limpar'
       Color = 11109754
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = -16
+      Font.Height = -13
       Font.Name = 'Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
@@ -282,7 +281,7 @@ object Form1: TForm1
         Caption = 'C'
         Color = 5258554
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clMaroon
+        Font.Color = clWhite
         Font.Height = -27
         Font.Name = 'Microsoft JhengHei'
         Font.Style = []
@@ -604,15 +603,15 @@ object Form1: TForm1
         ParentFont = False
       end
       object lblDisplay: TLabel
-        Left = 409
+        Left = 410
         Top = 28
-        Width = 32
-        Height = 71
+        Width = 31
+        Height = 67
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = 71
+        Font.Height = 67
         Font.Name = 'Microsoft JhengHei'
         Font.Style = []
         ParentFont = False

@@ -331,63 +331,102 @@ end;
 
 procedure TForm1.pnl7Click(Sender: TObject);
 begin
-
-  CheckNumeroColocado('7');
-  podeReiniciarNumero := False;
+  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  else
+  begin
+    CheckNumeroColocado('7');
+    podeReiniciarNumero := False;
+  end;
 end;
 
 procedure TForm1.pnl8Click(Sender: TObject);
 begin
-  CheckNumeroColocado('8');
-  podeReiniciarNumero := False;
+  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  else
+  begin
+    CheckNumeroColocado('8');
+    podeReiniciarNumero := False;
+  end;
 end;
 
 procedure TForm1.pnl9Click(Sender: TObject);
 begin
-  CheckNumeroColocado('9');
-  podeReiniciarNumero := False;
+  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  else
+  begin
+    CheckNumeroColocado('9');
+    podeReiniciarNumero := False;
+  end;
 end;
 
 procedure TForm1.pnl4Click(Sender: TObject);
 begin
-  CheckNumeroColocado('4');
-  podeReiniciarNumero := False;
+  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  else
+  begin
+    CheckNumeroColocado('4');
+    podeReiniciarNumero := False;
+  end;
 end;
 
 procedure TForm1.pnl5Click(Sender: TObject);
 begin
-  CheckNumeroColocado('5');
-  podeReiniciarNumero := False;
+  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  else
+  begin
+    CheckNumeroColocado('5');
+    podeReiniciarNumero := False;
+  end;
 end;
 
 procedure TForm1.pnl6Click(Sender: TObject);
 begin
-  CheckNumeroColocado('6');
-  podeReiniciarNumero := False;
+  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  else
+  begin
+    CheckNumeroColocado('6');
+    podeReiniciarNumero := False;
+  end;
 end;
 
 procedure TForm1.pnl1Click(Sender: TObject);
 begin
-  CheckNumeroColocado('1');
-  podeReiniciarNumero := False;
+  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  else
+  begin
+    CheckNumeroColocado('1');
+    podeReiniciarNumero := False;
+  end;
 end;
 
 procedure TForm1.pnl2Click(Sender: TObject);
 begin
-  CheckNumeroColocado('2');
-  podeReiniciarNumero := False;
+  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  else
+  begin
+    CheckNumeroColocado('2');
+    podeReiniciarNumero := False;
+  end;
 end;
 
 procedure TForm1.pnl3Click(Sender: TObject);
 begin
-  CheckNumeroColocado('3');
-  podeReiniciarNumero := False;
+  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  else
+  begin
+    CheckNumeroColocado('3');
+    podeReiniciarNumero := False;
+  end;
 end;
 
 procedure TForm1.pnl0Click(Sender: TObject);
 begin
-  CheckNumeroColocado('0');
-  podeReiniciarNumero := False;
+  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  else
+  begin
+    CheckNumeroColocado('0');
+    podeReiniciarNumero := False;
+  end;
 end;
 
 procedure TForm1.pnlVirgClick(Sender: TObject);
@@ -411,26 +450,22 @@ begin
   end
   else
   begin
-    {
-    VerificarVirgula := 0;
-    try
-      for i := 1 to length(edtDisplay.Text) do
-      begin
-        verificarVirgula := StrToInt(edtDisplay.Text[i]);
-      end;
-      temVirgula := False;
-
-    except
-      temVirgula := True;
-    end;
-    }
     if jahouveResultado then
     begin
       edtDisplay.Text := '0';
       jahouveResultado := False;
+      edtDisplay.Text := edtDisplay.Text+',';
+      temVirgula := True;
+    end
+    else
+    begin
+      if (Length(edtDisplay.Text) >= 14) and (podeReiniciarNumero = False) then
+      else
+      begin
+        edtDisplay.Text := edtDisplay.Text+',';
+        temVirgula := True;
+      end;
     end;
-    edtDisplay.Text := edtDisplay.Text+',';
-    temVirgula := True;
   end;
 end;
 
@@ -777,7 +812,6 @@ begin
   Form1.pnlAc.Color := $00503D3A;
   Form1.pnlC.Color := $00503D3A;
   Form1.lblFormula.Font.Color:= clWhite;
-  Form1.pnlAc.Font.Color := clMaroon;
   Form1.pnlDelete.Color := $00503D3A;
   Form1.pnlDiv.Color := $00503D3A;
   Form1.pnlMult.Color := $00503D3A;
@@ -802,7 +836,6 @@ procedure TForm1.D1Click(Sender: TObject);
 begin
   MudarCor('Yellow');
   Form1.pnlAc.Color := $0046BCE3;
-  Form1.pnlAc.Font.Color := $00106183;
   Form1.lblFormula.Font.Color:= clBlack;
   Form1.pnlC.Color := $0046BCE3;
   Form1.pnlDelete.Color := $0046BCE3;
@@ -827,7 +860,6 @@ procedure TForm1.Purple1Click(Sender: TObject);
 begin
   MudarCor('Purple');
   Form1.pnlAc.Color := $00F97B9D;
-  Form1.pnlAc.Font.Color := $00FF0080;
   Form1.lblFormula.Font.Color:= clBlack;
   Form1.pnlC.Color := $00F97B9D;
   Form1.pnlDelete.Color := $00F97B9D;
@@ -862,8 +894,6 @@ begin
   Form1.pnlFundoDigitos.Color := $00849D40;
   Form1.pnlFundoTotal.Color:= $00849D40;
   Form1.pnlMemo.Color := $00849D40;
-
-  Form1.pnlAc.Font.Color := $004F5109;
 
   Form1.lblFormula.Font.Color:= clBlack;
   Form1.edtDisplay.Font.Color := clBlack;
