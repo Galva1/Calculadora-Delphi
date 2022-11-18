@@ -331,7 +331,7 @@ end;
 
 procedure TForm1.pnl7Click(Sender: TObject);
 begin
-  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  if (Length(edtDisplay.Text) >= 18) and not(podeReiniciarNumero) and not(jahouveResultado) then
   else
   begin
     CheckNumeroColocado('7');
@@ -341,7 +341,7 @@ end;
 
 procedure TForm1.pnl8Click(Sender: TObject);
 begin
-  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  if (Length(edtDisplay.Text) >= 18) and not(podeReiniciarNumero) and not(jahouveResultado) then
   else
   begin
     CheckNumeroColocado('8');
@@ -351,7 +351,7 @@ end;
 
 procedure TForm1.pnl9Click(Sender: TObject);
 begin
-  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  if (Length(edtDisplay.Text) >= 18) and not(podeReiniciarNumero) and not(jahouveResultado) then
   else
   begin
     CheckNumeroColocado('9');
@@ -361,7 +361,7 @@ end;
 
 procedure TForm1.pnl4Click(Sender: TObject);
 begin
-  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  if (Length(edtDisplay.Text) >= 18) and not(podeReiniciarNumero) and not(jahouveResultado) then
   else
   begin
     CheckNumeroColocado('4');
@@ -371,7 +371,7 @@ end;
 
 procedure TForm1.pnl5Click(Sender: TObject);
 begin
-  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  if (Length(edtDisplay.Text) >= 18) and not(podeReiniciarNumero) and not(jahouveResultado) then
   else
   begin
     CheckNumeroColocado('5');
@@ -381,7 +381,7 @@ end;
 
 procedure TForm1.pnl6Click(Sender: TObject);
 begin
-  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  if (Length(edtDisplay.Text) >= 18) and not(podeReiniciarNumero) and not(jahouveResultado) then
   else
   begin
     CheckNumeroColocado('6');
@@ -391,7 +391,7 @@ end;
 
 procedure TForm1.pnl1Click(Sender: TObject);
 begin
-  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  if (Length(edtDisplay.Text) >= 18) and not(podeReiniciarNumero) and not(jahouveResultado) then
   else
   begin
     CheckNumeroColocado('1');
@@ -401,7 +401,7 @@ end;
 
 procedure TForm1.pnl2Click(Sender: TObject);
 begin
-  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  if (Length(edtDisplay.Text) >= 18) and not(podeReiniciarNumero) and not(jahouveResultado) then
   else
   begin
     CheckNumeroColocado('2');
@@ -411,7 +411,7 @@ end;
 
 procedure TForm1.pnl3Click(Sender: TObject);
 begin
-  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  if (Length(edtDisplay.Text) >= 18) and not(podeReiniciarNumero) and not(jahouveResultado) then
   else
   begin
     CheckNumeroColocado('3');
@@ -421,7 +421,7 @@ end;
 
 procedure TForm1.pnl0Click(Sender: TObject);
 begin
-  if (Length(edtDisplay.Text) >= 14) and not(podeReiniciarNumero) then
+  if (Length(edtDisplay.Text) >= 18) and not(podeReiniciarNumero) and not(jahouveResultado) then
   else
   begin
     CheckNumeroColocado('0');
@@ -459,7 +459,7 @@ begin
     end
     else
     begin
-      if (Length(edtDisplay.Text) >= 14) and (podeReiniciarNumero = False) then
+      if (Length(edtDisplay.Text) >= 18) and (podeReiniciarNumero = False) then
       else
       begin
         edtDisplay.Text := edtDisplay.Text+',';
@@ -783,7 +783,7 @@ begin
         pnlMenosClick(nil);
         key:=#0;
       end;
-    14:
+    148:
       begin
         pnlMultClick(nil);
         key:=#0;

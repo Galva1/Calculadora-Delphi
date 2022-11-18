@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 598
-  Top = 133
+  Left = 499
+  Top = 131
   Width = 629
   Height = 612
   Cursor = crArrow
@@ -603,15 +603,15 @@ object Form1: TForm1
         ParentFont = False
       end
       object lblDisplay: TLabel
-        Left = 410
-        Top = 28
-        Width = 31
-        Height = 67
+        Left = 417
+        Top = 40
+        Width = 24
+        Height = 51
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = 67
+        Font.Height = 52
         Font.Name = 'Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
