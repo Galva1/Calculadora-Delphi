@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 499
-  Top = 131
+  Left = 644
+  Top = 144
   Width = 629
   Height = 612
   Cursor = crArrow

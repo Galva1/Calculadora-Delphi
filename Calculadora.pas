@@ -170,7 +170,15 @@ begin
   if oper = '*' then
     valorResultado:= StrToFloat(valor1) * StrToFloat(valor2);
   if oper = '/' then
-    valorResultado:= StrToFloat(valor1) / StrToFloat(valor2);
+  begin
+    if valor2 = '0' then
+    begin
+      Application.MessageBox('Não é possível dividir por zero.','Calculadora');
+      exit;
+    end
+    else
+      valorResultado:= StrToFloat(valor1) / StrToFloat(valor2);
+  end;
 end;
 
 function TForm1.OperacaoSelecionada (SinalRecebido: String): String;
@@ -308,7 +316,7 @@ begin
             else
             begin
             if valor2= '0' then
-              ShowMessage('Não é possível dividir por zero')
+              Application.MessageBox('Não é possível dividir por zero.','Calculadora')
             else
             begin
               valor2 := edtDisplay.Text;
@@ -628,7 +636,7 @@ begin
     3:
       begin
         if valor2 = '0' then
-           ShowMessage('Não é possível dividir por zero')
+           Application.MessageBox('Não é possível dividir por zero.','Calculadora')
         else
         begin
           valorResultado:=StrToFloat(valor1) / StrToFloat(valor2);
@@ -712,7 +720,7 @@ begin
   end
   else
   begin
-    case AnsiIndexStr((Key),['0','1','2','3','4','5','6','7','8','9',',',#8,'+','-','*', '/',#13,#27]) of
+    case AnsiIndexStr((Key),['0','1','2','3','4','5','6','7','8','9',',',#8,'+','-','*','/',#13,#27]) of
     0:
       begin
         pnl0Click(nil);
@@ -783,7 +791,7 @@ begin
         pnlMenosClick(nil);
         key:=#0;
       end;
-    148:
+    14:
       begin
         pnlMultClick(nil);
         key:=#0;
